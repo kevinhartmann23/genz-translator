@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import Clock from '../Clock/Clock'
-import { Link } from 'react-router-dom';
-import twitter from '../../assets/icons/twitter.png';
+import { Redirect } from 'react-router-dom';
+import logout from '../../assets/icons/logout.png';
+import account from '../../assets/icons/account.png';
 import { useAuth } from '../../contexts/AuthContext';
+
 import {
   AppBar,
   Toolbar,
@@ -12,12 +14,25 @@ import {
   Divider
 } from 'react95';
 
-const Footer = () => {
+const Header = () => {
+  const { signOut, currentUser } = useAuth()
   const [open, setOpen] = useState(false);
 
+  async function handleLogout(event) {
+    event.preventDefault()
+    try {
+      await signOut()
+    } catch (error) {
+      console.log('error', error)
+    }
+
+  }
 
   return (
-    <AppBar className='footer'>
+    <>
+    {!currentUser && <Redirect to="/login" />}
+    {currentUser &&  
+    <AppBar>
       <Toolbar style={{ justifyContent: 'space-between' }}>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <Button
@@ -26,7 +41,7 @@ const Footer = () => {
             style={{ fontWeight: 'bold' }}
           >
             <img
-              src={twitter}
+              src={logout}
               alt='react95 logo'
               style={{ height: '20px', marginRight: 4 }}
             />
@@ -42,22 +57,20 @@ const Footer = () => {
               onClick={() => setOpen(false)}
             >
               <ListItem>
-                <span role='img' aria-label='👨‍💻'>
-                  👨‍💻
-                </span>
-                Profile
-              </ListItem>
-              <ListItem>
-                <span role='img' aria-label='📁'>
-                  📁
-                </span>
-                My account
+                <img
+                  src={account}
+                  alt='account information'
+                  style={{ height: '20px', marginRight: 4 }}
+                />
+                Account
               </ListItem>
               <Divider />
-              <ListItem disabled>
-                <span role='img' aria-label='🔙'>
-                  🔙
-                </span>
+              <ListItem onClick={handleLogout}>
+                <img
+                  src={logout}
+                  alt='logout'
+                  style={{ height: '20px', marginRight: 4 }}
+                />
                 Logout
               </ListItem>
             </List>
@@ -66,7 +79,9 @@ const Footer = () => {
         <Clock />
       </Toolbar>
     </AppBar>
+    }
+    </>
   )
 }
 
-export default Footer;
+export default Header;
