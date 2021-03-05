@@ -2,7 +2,7 @@ import React from 'react'
 import Signup from '../SignUp/Signup'
 import Login from '../Login/Login'
 import Dashboard from '../Dashboard/Dashboard'
-import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -33,19 +33,19 @@ const GlobalStyles = createGlobalStyle`
 
 const App = () => {
   return (
-    <>
+    <main className='App'>
     <GlobalStyles />
     <ThemeProvider theme={original}>
       <AuthProvider>
+        <Header />
         <Switch>
           <Route exact path='/' component={Dashboard} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
         </Switch>
-        <Footer />
       </AuthProvider>
     </ThemeProvider>
-  </>
+  </main>
   );
 }
 
