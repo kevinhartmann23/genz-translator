@@ -17,19 +17,29 @@ import {
 } from 'react95'
 
 const Login = () => {
-  const emailRef = useRef()
-  const passwordRef = useRef()
+  const [emailText, setEmail] = useState('')
+  const [passwordText, setPassword] = useState('')
   const { login, currentUser, signInWithPopup } = useAuth()
 
   const [error, setError] = useState('')
+
+  function handleChange(event){
+    event.preventDefault()
+    if(event.target.id === 'email'){
+      setEmail(event.target.value)
+    } else if(event.target.id === 'password'){
+      setPassword(event.target.value)
+    }
+  }
 
   async function handleSubmit(event) {
     event.preventDefault()
 
     try {
-      await login(emailRef.current.value, passwordRef.current.value)
-      setError('')
+      await login(emailText, passwordText)
+      setError('WTF')
     } catch (error) {
+      console.log(error.message)
       setError(error.message)
     }
   }
@@ -51,7 +61,7 @@ const Login = () => {
             {error &&
               <Panel
                 variant='well'
-                style={{ marginTop: '1rem', padding: '0.1rem 0.25rem', width: '100%', color: 'red' }}
+                style={{ marginTop: '.5rem', marginBottom: '1rem', padding: '0.1rem 0.25rem', width: '100%', color: 'red', textAlign:'center' }}
               >
                 <p>{error}</p>
               </Panel>
@@ -61,8 +71,10 @@ const Login = () => {
                 <label htmlFor='email'>Email</label>
                 <TextField
                   className='email'
+                  id='email'
                   type='email'
-                  ref={emailRef}
+                  value={emailText}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -70,12 +82,14 @@ const Login = () => {
                 <label htmlFor='email'>Password</label>
                 <TextField
                   className='password'
+                  id='password'
                   type='password'
-                  ref={passwordRef}
+                  value={passwordText}
+                  onChange={handleChange}
                   required
                 />
               </div>
-              <Button style={{ width: '100%', marginTop: '1rem', marginBottom: '1rem' }} type='submit' className='form-submit-button' onSubmit={handleSubmit}>Login</Button>
+              <Button style={{ width: '100%', marginTop: '1rem', marginBottom: '1rem' }} type='submit' className='form-submit-button' onClick={handleSubmit}>Login</Button>
             </form>
             <div className='or-container'>
               <hr className='line'></hr>
@@ -100,7 +114,7 @@ const Login = () => {
                  Continue with Github
               </Button>
             </div>
-            <p className='form-footer'>Don't have an account? <Anchor><Link to='/signup' className='login-link'>Sign Up</Link></Anchor></p>
+            <p className='form-footer'>Don't have an account? <Link to='/signup' className='login-link'>Sign Up</Link></p>
           </div>
         </WindowContent>
       </Window>
