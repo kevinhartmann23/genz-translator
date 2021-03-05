@@ -4,6 +4,7 @@ import Login from '../Login/Login'
 import Dashboard from '../Dashboard/Dashboard'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
+import SearchForm from '../SearchForm/SearchForm'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -41,9 +42,10 @@ const App = () => {
         <Header />
         <Sidebar />
         <Switch>
-          <Route path='/' component={Dashboard} />
+          <Route exact path='/' component={Dashboard} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
+          <Route path='/search' component={SearchForm} />
         </Switch>
       </AuthProvider>
     </ThemeProvider>
