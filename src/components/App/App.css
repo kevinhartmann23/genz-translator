@@ -5,4 +5,5 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #008080;
+  align-items: center;
 }
