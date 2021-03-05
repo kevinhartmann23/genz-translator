@@ -20,7 +20,7 @@ const Signup = () => {
   const [emailText, setEmail] = useState('')
   const [passwordText, setPassword] = useState('')
   const [confirmText, setConfirm] = useState('')
-  const { login, currentUser, signInWithPopup } = useAuth()
+  const { signUp, currentUser, signInWithPopup } = useAuth()
 
   const [error, setError] = useState('')
 
@@ -49,7 +49,7 @@ const Signup = () => {
     event.preventDefault()
    
     try {
-      await login(emailText, passwordText)
+      await signUp(emailText, passwordText)
       setError('')
     } catch (error) {
       setError(error.message)
@@ -74,7 +74,7 @@ const Signup = () => {
                 variant='well'
               style={{ marginTop: '.5rem', marginBottom: '1rem', padding: '0.1rem 0.25rem', width: '100%', color: 'red', textAlign: 'center' }}
               >
-              <p>{error}</p>
+              <p className='error'>{error}</p>
               </Panel>
             }
             <form className='signup-form'>

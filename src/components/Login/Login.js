@@ -63,7 +63,7 @@ const Login = () => {
                 variant='well'
                 style={{ marginTop: '.5rem', marginBottom: '1rem', padding: '0.1rem 0.25rem', width: '100%', color: 'red', textAlign:'center' }}
               >
-                <p>{error}</p>
+                <p className='error'>{error}</p>
               </Panel>
             }
             <form className='signup-form'>
@@ -114,7 +114,7 @@ const Login = () => {
                  Continue with Github
               </Button>
             </div>
-            <p className='form-footer'>Don't have an account? <Link to='/signup' className='login-link'>Sign Up</Link></p>
+            <p className='form-footer'>Don't have an account? <Link to='/signup' className='signup-link'>Sign Up</Link></p>
           </div>
         </WindowContent>
       </Window>
