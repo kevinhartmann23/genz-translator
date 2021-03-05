@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import Sidebar from '../Sidebar/Sidebar'
+import './Dashboard.css'
 
 const Dashboard = () => {
 
   return (
-    <>
-      <h1>Dashboard</h1>
-    </>
+    <section className='dashboard'>
+      <Sidebar />
+    </section>
   )
 }
 
