@@ -41,7 +41,7 @@ const App = () => {
         <Header />
         <Sidebar />
         <Switch>
-          <Route exact path='/' component={Dashboard} />
+          <Route path='/' component={Dashboard} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
         </Switch>
