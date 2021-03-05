@@ -1,0 +1,43 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  height: 70%;
+  width: 6.5vw;
+  left: 0;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: space-between;
+  height: 100%;
+  padding: .75rem;
+}
+
+.icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-bottom: .25rem;
+}
+
+a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110%;
+}
+
+a:hover,
+.icon:hover,
+label:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+label {
+  width: 100%;
+  font-size: .75rem !important;
+  text-align: center;
+}

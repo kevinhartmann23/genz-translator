@@ -12,7 +12,6 @@ import {
   WindowHeader,
   Button,
   TextField,
-  Anchor,
   Panel
 } from 'react95'
 
@@ -37,7 +36,7 @@ const Login = () => {
 
     try {
       await login(emailText, passwordText)
-      setError('WTF')
+      setError('')
     } catch (error) {
       console.log(error.message)
       setError(error.message)

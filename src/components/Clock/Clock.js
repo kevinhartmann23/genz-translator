@@ -17,7 +17,7 @@ function Clock() {
   }
 
   return (
-    <div style={{ width: '20%', display: 'flex', flexDirection: 'row', justifyContent: "space-between" }}>
+    <div style={{ width: '12rem', display: 'flex', flexDirection: 'row', justifyContent: "space-between" }}>
       <Panel variant='well' style={{ width: '95%', textAlign: 'center' }}>{date.toLocaleString()}</Panel>
     </div>
   );
