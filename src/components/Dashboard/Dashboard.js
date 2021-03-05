@@ -6,7 +6,7 @@ const Dashboard = () => {
 
   return (
     <section className='dashboard'>
-      <Sidebar />
+  
     </section>
   )
 }

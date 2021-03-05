@@ -3,6 +3,7 @@ import Signup from '../SignUp/Signup'
 import Login from '../Login/Login'
 import Dashboard from '../Dashboard/Dashboard'
 import Header from '../Header/Header'
+import Sidebar from '../Sidebar/Sidebar'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -38,6 +39,7 @@ const App = () => {
     <ThemeProvider theme={original}>
       <AuthProvider>
         <Header />
+        <Sidebar />
         <Switch>
           <Route exact path='/' component={Dashboard} />
           <Route path='/login' component={Login} />
