@@ -1,0 +1,25 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-self: center;
+  align-items: center;
+}
+
+.search-icon {
+  margin-bottom: 1rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.loading-container {
+  align-items: center;
+  margin-bottom: 1rem;
+}
