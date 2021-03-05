@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
-import Menu from '../Menu/Menu'
+import React, {useState, useEffect} from 'react';
+import Clock from '../Clock/Clock'
 import { Link } from 'react-router-dom';
 import twitter from '../../assets/icons/twitter.png';
 import { useAuth } from '../../contexts/AuthContext';
 import {
   AppBar,
   Toolbar,
-  TextField,
   Button,
   List,
   ListItem,
@@ -14,7 +13,8 @@ import {
 } from 'react95';
 
 const Footer = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
 
   return (
     <AppBar className='footer'>
@@ -63,8 +63,7 @@ const Footer = () => {
             </List>
           )}
         </div>
-
-        <TextField placeholder='Search...' width={150} />
+        <Clock />
       </Toolbar>
     </AppBar>
   )
