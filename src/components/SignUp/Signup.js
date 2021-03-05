@@ -46,7 +46,7 @@ const Signup = () => {
   return (
     <>
       {currentUser && <Redirect to='/' />}
-      <Window className='window' style={{width:'30vw'}}>
+      <Window className='window' style={{width:'30vw', marginTop:'4.5rem'}}>
         <WindowHeader active={true} className='window-header'>
           <span>GenZ 2 A - SignUp</span>
         </WindowHeader>
@@ -57,7 +57,7 @@ const Signup = () => {
                 variant='well'
                 style={{ marginTop: '1rem', padding: '0.1rem 0.25rem', width: '100%', color:'red' }}
               >
-              {error}
+              <p>{error}</p>
               </Panel>
             }
             <form className='signup-form'>
@@ -115,7 +115,6 @@ const Signup = () => {
           </div>
         </WindowContent>
       </Window>
-      
     </>
   )
 }

@@ -1,0 +1,22 @@
+.or-text {
+  width: 100%;
+  text-align: center;
+}
+
+.auth-button-container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.google-button,
+.github-button,
+.twitter-button {
+  margin-top: 1rem;
+}
+
+.form-footer {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
