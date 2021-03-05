@@ -36,6 +36,7 @@ const Header = () => {
       <Toolbar style={{ justifyContent: 'space-between' }}>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <Button
+            className='start-button'
             onClick={() => setOpen(!open)}
             active={open}
             style={{ fontWeight: 'bold' }}
@@ -65,7 +66,7 @@ const Header = () => {
                 Account
               </ListItem>
               <Divider />
-              <ListItem onClick={handleLogout}>
+              <ListItem onClick={handleLogout} className='logout-button'>
                 <img
                   src={logout}
                   alt='logout'
