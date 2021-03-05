@@ -17,8 +17,8 @@ import {
 } from 'react95'
 
 const Login = () => {
-  const [emailRef, setEmail] = useState('')
-  const [passwordRef, setPassword] = useState('')
+  const [emailText, setEmail] = useState('')
+  const [passwordText, setPassword] = useState('')
   const { login, currentUser, signInWithPopup } = useAuth()
 
   const [error, setError] = useState('')
@@ -36,7 +36,7 @@ const Login = () => {
     event.preventDefault()
 
     try {
-      await login(emailRef, passwordRef)
+      await login(emailText, passwordText)
       setError('WTF')
     } catch (error) {
       console.log(error.message)
@@ -61,7 +61,7 @@ const Login = () => {
             {error &&
               <Panel
                 variant='well'
-                style={{ marginTop: '1rem', padding: '0.1rem 0.25rem', width: '100%', color: 'red' }}
+                style={{ marginTop: '.5rem', marginBottom: '1rem', padding: '0.1rem 0.25rem', width: '100%', color: 'red', textAlign:'center' }}
               >
                 <p>{error}</p>
               </Panel>
@@ -73,7 +73,7 @@ const Login = () => {
                   className='email'
                   id='email'
                   type='email'
-                  value={emailRef}
+                  value={emailText}
                   onChange={handleChange}
                   required
                 />
@@ -84,7 +84,7 @@ const Login = () => {
                   className='password'
                   id='password'
                   type='password'
-                  value={passwordRef}
+                  value={passwordText}
                   onChange={handleChange}
                   required
                 />

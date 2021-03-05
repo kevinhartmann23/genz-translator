@@ -20,3 +20,8 @@
   margin-top: 1rem;
   text-align: center;
 }
+
+.login-link {
+  color: blue;
+  text-decoration: underline;
+}
