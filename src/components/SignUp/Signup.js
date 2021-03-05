@@ -63,7 +63,7 @@ const Signup = () => {
   return (
     <>
       {currentUser && <Redirect to='/' />}
-      <Window className='window' style={{width:'30vw', marginTop:'4.5rem'}}>
+      <Window className='window' style={{width:'25rem', alignSelf:'center', left:'35%'}}>
         <WindowHeader active={true} className='window-header'>
           <span>GenZ 2 A - SignUp</span>
         </WindowHeader>
