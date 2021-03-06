@@ -20,7 +20,7 @@ const Sidebar = () => {
             <img className='icon' id='search-terms' src={searchTerms} alt='Search for a term'/>
             <label htmlFor='search-terms'>Search</label>
           </Link>
-          <Link to='/cheat_sheet'>
+          <Link to='/cheatsheet'>
             <img className='icon' id='cheat-sheet' src={cheatSheet} alt='View my cheatsheet'/>
             <label htmlFor='cheat-sheet'>Cheat Sheet</label>
           </Link>
