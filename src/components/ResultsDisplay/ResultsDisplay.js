@@ -39,7 +39,7 @@ const ResultsDisplay = () => {
           </Fieldset>
           <Fieldset label='Example:' style={{marginBottom:'1rem'}}>
             <div style={{ padding: '0.5em 0 0.5em 0' }}>Used In Sentence(s):</div>
-          <Panel variant='well' style={{ width: '100%', height: 'auto', padding: '1rem', height: '6rem', overflow: 'scroll' }}>
+          <Panel variant='well' style={{ width: '100%', padding: '1rem', height: '6rem', overflow: 'scroll' }}>
               {term.example}
             </Panel>
           </Fieldset>
