@@ -1,5 +1,6 @@
 import React, {useState} from 'react' 
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
 import searchTerms from '../../assets/icons/search_terms.png'
 import './SearchForm.css'
 
@@ -10,22 +11,38 @@ import {
   Button,
   TextField,
   LoadingIndicator,
+  Progress,
   Panel
 } from 'react95'
 
 const SearchForm = () => {
   const [loading, setLoading] = useState(false)
   const [searchValue, setSearch] = useState('')
+  const [formatValue, setFormatValue] = useState('')
+  const { querySearchTerms, termData } = useAuth()
   
   const handleChange = (event) => {
     event.preventDefault()
     setSearch(event.target.value)
   }
 
-  const handleClick = (event) => {
+  const formatQuery = () => {
+    const formattedTerm = searchValue.replace(/ /g, "%20")
+    setFormatValue(formattedTerm)
+  }
+
+   async function handleClick(event) {
     event.preventDefault()
-    setLoading(true)
-    console.log(searchValue)
+
+    formatQuery()
+    
+    try{
+      setLoading(true)
+      await querySearchTerms(formatValue)
+      await setLoading(false)
+    } catch(error){
+      console.log(error)
+    }
   }
   
   return (
@@ -53,7 +70,7 @@ const SearchForm = () => {
               onChange={handleChange}
               required
             />
-            <Button style={{width:'60%'}}onClick={handleClick}>Search</Button>
+            <Button style={{width:'40%'}}onClick={handleClick}>Search</Button>
           </form>
         </div>
       </WindowContent>
@@ -61,9 +78,20 @@ const SearchForm = () => {
         <div className='loading-container'>
           <Panel variant='well' style={{width: '100%', padding:'1rem'}}>
             <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>Searching Term...</p>
-            <LoadingIndicator isLoading style={{width:'100%'}}/>
+            <LoadingIndicator isLoading style={{width:'100%', height: '2rem'}}/>
           </Panel>
         </div>
+      }
+      {termData.length > 0 && 
+          <div className='loading-container'>
+            <Panel variant='well' style={{ width: '100%', padding: '1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }}>
+              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${searchValue.toUpperCase()}...`}</p>
+              <Progress hideValue value={100} style={{ width: '100%', height:'2rem' }}  />
+              <Link to={`/results/${formatValue}`} style={{width:'40%', marginTop:'.5rem'}}>
+                <Button style={{ width: '100%' }}>View Results</Button>
+              </Link>
+            </Panel>
+          </div>
       }
     </Window> 
     </>
