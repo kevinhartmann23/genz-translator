@@ -26,13 +26,6 @@ const SearchForm = () => {
     setSearch(event.target.value)
   }
 
-  // const formatQuery = (event) => {
-  //   event.preventDefault()
-  //   const formattedTerm = searchValue.replace(/ /g, "%20")
-  //   setFormatValue(formattedTerm)
-  //   handleClick()
-  // }
-
    async function handleClick(event) {
     event.preventDefault()
 
