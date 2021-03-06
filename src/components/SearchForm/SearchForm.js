@@ -1,4 +1,4 @@
-import React, {useState} from 'react' 
+import React, {useState, useEffect} from 'react' 
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import searchTerms from '../../assets/icons/search_terms.png'
@@ -19,31 +19,42 @@ const SearchForm = () => {
   const [loading, setLoading] = useState(false)
   const [searchValue, setSearch] = useState('')
   const [formatValue, setFormatValue] = useState('')
-  const { querySearchTerms, termData } = useAuth()
+  const { querySearchTerms, termData, resetSearchData } = useAuth()
   
   const handleChange = (event) => {
     event.preventDefault()
     setSearch(event.target.value)
   }
 
-  const formatQuery = () => {
-    const formattedTerm = searchValue.replace(/ /g, "%20")
-    setFormatValue(formattedTerm)
-  }
+  // const formatQuery = (event) => {
+  //   event.preventDefault()
+  //   const formattedTerm = searchValue.replace(/ /g, "%20")
+  //   setFormatValue(formattedTerm)
+  //   handleClick()
+  // }
 
    async function handleClick(event) {
     event.preventDefault()
 
-    formatQuery()
-    
     try{
+      console.log('TRY')
       setLoading(true)
-      await querySearchTerms(formatValue)
+      const formattedTerm = await searchValue.replace(/ /g, "%20")
+      await setFormatValue(formattedTerm)
+      await querySearchTerms(formattedTerm)
       await setLoading(false)
     } catch(error){
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    if(termData.length > 0){
+      resetSearchData()
+      setSearch('')
+    }
+  }, [])
+
   
   return (
     <>

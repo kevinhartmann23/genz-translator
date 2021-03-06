@@ -1,4 +1,4 @@
-import React, { useState } from 'react' 
+import React, { useState, useEffect } from 'react' 
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import addButton from '../../assets/icons/add.png'
@@ -26,7 +26,7 @@ import {
 const ResultsDisplay = () => {
   const [activeTab, setActiveTab] = useState(0)
   const [savedState, setSaveState] = useState(xMark)
-  const { termData, termName, storeUserFavorites } = useAuth()
+  const { termData, termName, storeUserFavorites, resetSearchData } = useAuth()
   const displayTermName = termName.replace(/%20/g, " ")
 
   const definitionTabs = termData.map((term, i) => <Tab value={i} key={i} id={i}>{`Definition ${i+1}`}</Tab>)
@@ -83,6 +83,14 @@ const ResultsDisplay = () => {
     const favoritedTerm = termData[activeTab]
     storeUserFavorites(favoritedTerm)
   }
+
+  useEffect(() => {
+    if (termData.length === 0) {
+      resetSearchData()
+      setSaveState(xMark)
+      setActiveTab(0)
+    }
+  }, [])
 
   return (
     <>
