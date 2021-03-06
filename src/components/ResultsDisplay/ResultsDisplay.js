@@ -1,6 +1,6 @@
 import React, { useState } from 'react' 
 import PropTypes from 'prop-types'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 
 import {
@@ -11,6 +11,7 @@ import {
   Tabs,
   TabBody,
   Fieldset,
+  Button
 
 } from 'react95'
 
@@ -19,7 +20,7 @@ const ResultsDisplay = ({term}) => {
   const { termData, termName } = useAuth()
   const displayTermName = termName.replace(/%20/g, " ")
 
-  const definitionTabs = termData.map((term, i) => <Tab value={i} id={i}>{`Definition ${i+1}`}</Tab>)
+  const definitionTabs = termData.map((term, i) => <Tab value={i} key={i} id={i}>{`Definition ${i+1}`}</Tab>)
 
   const handleChange = (event) => {
     event.preventDefault()
@@ -28,8 +29,15 @@ const ResultsDisplay = ({term}) => {
 
   return (
     <>
-      <Window style={{ width:'60%', height:'80%', marginTop:'3.5rem' }}>
-        <WindowHeader>Results for {displayTermName}...</WindowHeader>
+      <Window style={{ width:'60%', height:'80%', marginTop:'3.5rem', right:'10%' }}>
+        <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span>Results for {displayTermName}...</span>
+          <Link to='/' style={{ width: '2rem' }}>
+            <Button style={{ fontWeight: 'bold' }}>
+              X
+          </Button>
+          </Link>
+        </WindowHeader>
         <WindowContent>
           <Tabs value={activeTab} onClick={handleChange}>
             {definitionTabs}
