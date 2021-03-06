@@ -16,12 +16,13 @@
 }
 
 .form-footer {
-  width: 100%;
+  width: inherit;
   margin-top: 1rem;
   text-align: center;
 }
 
-.login-link {
+.signup-link {
+  width: inherit;
   color: blue;
   text-decoration: underline;
 }

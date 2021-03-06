@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import apiCalls from './apiCalls'
 import { auth, googleProvider, twitterProvider, githubProvider } from './firebase'
 
 const Context = React.createContext()
@@ -10,6 +11,8 @@ export function useAuth() {
 export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [displayName, setDisplayName] = useState('User')
+  const [termName, setTermName] = useState('')
+  const [termData, setTermData] = useState([])
 
   function signUp(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -52,6 +55,24 @@ export default function AuthProvider({ children }) {
     setDisplayName(name)
   }
 
+  function sortIncomingData(data) {
+    const results = data.sort((a,b) => b.thumbs_up - a.thumbs_up)
+    return [results[0], results[1], results[2]]
+  }
+
+  async function querySearchTerms(terms) {
+    setTermName(terms)
+    
+    try {
+     const result = await apiCalls.requestTermsInfo(terms)
+     const data = await result.list
+     const sortedData = await sortIncomingData(data)
+     await setTermData(sortedData)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     const changeUserState = auth.onAuthStateChanged(user => {
       if (user) {
@@ -69,7 +90,10 @@ export default function AuthProvider({ children }) {
     signUp,
     login,
     signInWithPopup,
-    updateName
+    updateName,
+    querySearchTerms,
+    termData,
+    termName
   }
 
   return (
