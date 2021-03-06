@@ -74,6 +74,11 @@ export default function AuthProvider({ children }) {
     }
   }
 
+  function resetSearchData(){
+    setTermData([])
+    setTermName('')
+  }
+
   function storeUserFavorites(term){
     setUserFavorites([...userFavorites, term])
   }
@@ -99,6 +104,7 @@ export default function AuthProvider({ children }) {
     updateName,
     querySearchTerms,
     storeUserFavorites,
+    resetSearchData,
     termData,
     termName
   }

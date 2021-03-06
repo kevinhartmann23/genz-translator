@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import addButton from '../../assets/icons/add.png'
+import checkMark from '../../assets/icons/check.png'
+import xMark from '../../assets/icons/x.png'
 
 import './ResultsDisplay.css'
 
@@ -23,6 +25,7 @@ import {
 
 const ResultsDisplay = () => {
   const [activeTab, setActiveTab] = useState(0)
+  const [savedState, setSaveState] = useState(xMark)
   const { termData, termName, storeUserFavorites } = useAuth()
   const displayTermName = termName.replace(/%20/g, " ")
 
@@ -31,13 +34,13 @@ const ResultsDisplay = () => {
   const wordInfo = termData.map((term, i) => {
     return (
         <div>
-          <Fieldset label={`${term.word}`} style={{marginBottom:'1rem'}}>
+          <Fieldset label={`${term.word}`} style={{marginBottom:'.5rem'}}>
             <div style={{ padding: '0.5em 0 0.5em 0' }}>Definition:</div>
             <Panel variant='well' style={{ width: '100%', height: 'auto', padding: '1rem' }}>
               {term.definition}
             </Panel>
           </Fieldset>
-          <Fieldset label='Example:' style={{marginBottom:'1rem'}}>
+          <Fieldset label='Example:' style={{marginBottom:'.5rem'}}>
             <div style={{ padding: '0.5em 0 0.5em 0' }}>Used In Sentence(s):</div>
           <Panel variant='well' style={{ width: '100%', padding: '1rem', height: '6rem', overflow: 'scroll' }}>
               {term.example}
@@ -54,6 +57,13 @@ const ResultsDisplay = () => {
                   <ListItem>
                     {`Thumbs Down: ${term.thumbs_down}`}
                   </ListItem>
+                  <Divider orientation='vertical' size='2rem' />
+                  <ListItem>
+                    <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+                      <p style={{marginRight:'.125rem'}}>Saved:</p>
+                      <img style={{ width: '1.3rem', height: '1.3rem' }} src={savedState} alt='item unsaved' />
+                    </div>
+                  </ListItem>
                 </List>
               </Panel>
             </div>
@@ -69,6 +79,7 @@ const ResultsDisplay = () => {
 
   const handleClick = (event) => {
     event.preventDefault()
+    setSaveState(checkMark)
     const favoritedTerm = termData[activeTab]
     storeUserFavorites(favoritedTerm)
   }
