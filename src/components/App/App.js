@@ -5,6 +5,7 @@ import Dashboard from '../Dashboard/Dashboard'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
 import SearchForm from '../SearchForm/SearchForm'
+import ResultsDisplay from '../ResultsDisplay/ResultsDisplay'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -46,6 +47,10 @@ const App = () => {
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
           <Route path='/search' component={SearchForm} />
+          <Route 
+            path='/results/:query'
+            component={ResultsDisplay} />
+            /> 
         </Switch>
       </AuthProvider>
     </ThemeProvider>

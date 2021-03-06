@@ -11,6 +11,7 @@ export function useAuth() {
 export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [displayName, setDisplayName] = useState('User')
+  const [termName, setTermName] = useState('')
   const [termData, setTermData] = useState([])
 
   function signUp(email, password) {
@@ -60,6 +61,8 @@ export default function AuthProvider({ children }) {
   }
 
   async function querySearchTerms(terms) {
+    setTermName(terms)
+    
     try {
      const result = await apiCalls.requestTermsInfo(terms)
      const data = await result.list
@@ -89,7 +92,8 @@ export default function AuthProvider({ children }) {
     signInWithPopup,
     updateName,
     querySearchTerms,
-    termData
+    termData,
+    termName
   }
 
   return (
