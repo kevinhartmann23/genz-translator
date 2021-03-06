@@ -13,6 +13,7 @@ export default function AuthProvider({ children }) {
   const [displayName, setDisplayName] = useState('User')
   const [termName, setTermName] = useState('')
   const [termData, setTermData] = useState([])
+  const [userFavorites, setUserFavorites ] = useState([])
 
   function signUp(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -73,6 +74,10 @@ export default function AuthProvider({ children }) {
     }
   }
 
+  function storeUserFavorites(term){
+    setUserFavorites([...userFavorites, term])
+  }
+
   useEffect(() => {
     const changeUserState = auth.onAuthStateChanged(user => {
       if (user) {
@@ -86,12 +91,14 @@ export default function AuthProvider({ children }) {
   const value = {
     currentUser,
     displayName,
+    userFavorites,
     signOut,
     signUp,
     login,
     signInWithPopup,
     updateName,
     querySearchTerms,
+    storeUserFavorites,
     termData,
     termName
   }
