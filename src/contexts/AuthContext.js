@@ -80,7 +80,13 @@ export default function AuthProvider({ children }) {
   }
 
   function storeUserFavorites(term){
-    setUserFavorites([...userFavorites, term])
+    const { definition, word } = term
+    const favorite = {
+      id: userFavorites.length + 1,
+      word,
+      definition,
+    }
+    setUserFavorites([...userFavorites, favorite])
   }
 
   useEffect(() => {
