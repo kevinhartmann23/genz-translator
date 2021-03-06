@@ -37,24 +37,24 @@ const GlobalStyles = createGlobalStyle`
 const App = () => {
   return (
     <main className='App'>
-    <GlobalStyles />
-    <ThemeProvider theme={original}>
-      <AuthProvider>
-        <Header />
-        <Sidebar />
-        <Switch>
-          <Route exact path='/' component={Dashboard} />
-          <Route path='/login' component={Login} />
-          <Route path='/signup' component={Signup} />
-          <Route path='/search' component={SearchForm} />
-          <Route 
-            path='/results/:query'
-            component={ResultsDisplay} />
-            /> 
-        </Switch>
-      </AuthProvider>
-    </ThemeProvider>
-  </main>
+      <GlobalStyles />
+      <ThemeProvider theme={original}>
+        <AuthProvider>
+          <Header />
+          <Sidebar />
+          <Switch>
+            <Route exact path='/' component={Dashboard} />
+            <Route path='/login' component={Login} />
+            <Route path='/signup' component={Signup} />
+            <Route path='/search' component={SearchForm} />
+            <Route 
+              path='/results/:query'
+              component={ResultsDisplay} 
+              />
+          </Switch>
+        </AuthProvider>
+      </ThemeProvider>
+    </main>
   );
 }
 

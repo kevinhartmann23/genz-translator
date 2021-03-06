@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Clock from '../Clock/Clock'
 import { Redirect } from 'react-router-dom';
 import logout from '../../assets/icons/logout.png';

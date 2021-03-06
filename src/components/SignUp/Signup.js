@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, Redirect } from 'react-router-dom';
 import google from '../../assets/icons/google.png';
@@ -12,7 +12,6 @@ import {
   WindowHeader,
   Button,
   TextField,
-  Anchor,
   Panel
 } from 'react95'
 

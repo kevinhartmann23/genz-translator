@@ -1,11 +1,8 @@
 import React from 'react';
-import { useAuth } from '../../contexts/AuthContext'
-import { Redirect } from 'react-router-dom'
-import SearchForm from '../SearchForm/SearchForm';
+
 import './Dashboard.css'
 
 const Dashboard = () => {
-  const { currentUser } = useAuth()
   
   return (
     <>
