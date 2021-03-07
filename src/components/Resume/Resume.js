@@ -12,7 +12,8 @@ import {
 } from 'react95'
 
 function Resume() {
-  const {currentUser} = useAuth()
+  const { currentUser } = useAuth()
+  
   return (
     <>
       {!currentUser && <Redirect to="/login" />}

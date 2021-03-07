@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react' 
 import FavoriteCard from '../FavoriteCard/FavoritesCard'
 import { useAuth } from '../../contexts/AuthContext'
+import { useApp } from '../../contexts/AppContext'
 import { Link, Redirect } from 'react-router-dom'
 import {
   Window,
@@ -10,7 +11,8 @@ import {
 } from 'react95'
 
 const CheatSheet = () => {
-  const { userFavorites, currentUser } = useAuth()
+  const { currentUser } = useAuth()
+  const { userFavorites } = useApp()
   
   let favoritesDisplay = userFavorites.map(fav => <FavoriteCard data={fav}/>)
   

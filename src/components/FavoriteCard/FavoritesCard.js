@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../../contexts/AuthContext'
+import { useApp } from '../../contexts/AppContext'
 import PropTypes from 'prop-types'
 import deleteButton from '../../assets/icons/delete.png'
 import {
@@ -9,7 +9,7 @@ import {
 } from 'react95'
 
 const FavoriteCard = ({data}) => {
-  const {removeFavorite} = useAuth()
+  const { removeFavorite } = useApp()
   const {id, word, definition} = data
   
   function handleClick(event){

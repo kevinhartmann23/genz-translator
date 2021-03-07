@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Signup from '../SignUp/Signup'
 import Login from '../Login/Login'
 import Dashboard from '../Dashboard/Dashboard'
@@ -11,8 +11,7 @@ import TopTerms from '../TopTerms/TopTerms'
 import EmojiGuide from '../EmojiGuide/EmojiGuide'
 import About from '../About/About'
 import Resume from '../Resume/Resume'
-import AuthProvider from '../../contexts/AuthContext'
-import {useAuth} from '../../contexts/AuthContext'
+import { useApp } from '../../contexts/AppContext'
 import { Switch, Route } from 'react-router-dom';
 import AccountInfo from '../AccountInfo/AccountInfo'
 
@@ -53,7 +52,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const App = () => {
-  const { displayTheme } = useAuth()
+  const { displayTheme } = useApp()
   let theme
 
   if(displayTheme === 'vaporTeal'){
