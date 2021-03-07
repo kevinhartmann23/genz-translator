@@ -20,7 +20,7 @@ const CheatSheet = () => {
 
   return (
     <>
-      <Window style={{ width: '60%', height: '90%', marginTop: '3.5rem', right: '10%' }}>
+      <Window style={{ width: '85%', height: '90%', marginTop: '3.5rem', right: '6%' }}>
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>My Lingo Cheat Sheet!</span>
           <Link to='/' style={{ width: '2rem' }}>
@@ -29,7 +29,7 @@ const CheatSheet = () => {
             </Button>
           </Link>
         </WindowHeader>
-        <WindowContent>
+        <WindowContent style={{display:'flex', flexWrap:'wrap', justifyContent:'center', width:'100%', height:'95%', padding:'0', overflow:'scroll'}}>
           {favoritesDisplay}
         </WindowContent>
       </Window>
