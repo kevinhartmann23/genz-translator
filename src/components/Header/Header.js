@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import Clock from '../Clock/Clock'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import logout from '../../assets/icons/logout.png';
 import account from '../../assets/icons/account.png';
 import { useAuth } from '../../contexts/AuthContext';
+
+import './Header.css'
 
 import {
   AppBar,
@@ -39,7 +41,7 @@ const Header = () => {
             className='start-button'
             onClick={() => setOpen(!open)}
             active={open}
-            style={{ fontWeight: 'bold' }}
+            style={{ fontWeight: 'bold', width: '7rem' }}
           >
             <img
               src={logout}
@@ -57,25 +59,26 @@ const Header = () => {
               }}
               onClick={() => setOpen(false)}
             >
-              <ListItem>
-                <img
-                  src={account}
-                  alt='account information'
-                  style={{ height: '20px', marginRight: 4 }}
-                />
+            <Link to='/about' style={{ width: '6.5rem', textAlign: 'center' }}>
+              <ListItem style={{width:'6.5rem', textAlign:'center'}} >
+                <img src={account} alt='about gen z to a' style={{ height: '20px', width:'20px'}}/>
+                About
+              </ListItem>
+            </Link>
+            <Divider />
+            <Link to='/account' style={{ width: '6.5rem', textAlign: 'center' }}>
+              <ListItem style={{width:'6.5rem', textAlign:'center'}} >
+                <img src={account} alt='account information' style={{ height: '20px', width:'20px' }}/>
                 Account
               </ListItem>
-              <Divider />
-              <ListItem onClick={handleLogout} className='logout-button'>
-                <img
-                  src={logout}
-                  alt='logout'
-                  style={{ height: '20px', marginRight: 4 }}
-                />
-                Logout
-              </ListItem>
-            </List>
-          )}
+            </Link>
+            <Divider />
+            <ListItem  style={{width:'6.5rem', textAlign:'center'}} onClick={handleLogout} className='logout-button'>
+              <img src={logout} alt='logout'style={{ height: '20px', width:'20px' }}/>
+              Logout
+            </ListItem>
+          </List>
+        )}
         </div>
         <Clock />
       </Toolbar>
