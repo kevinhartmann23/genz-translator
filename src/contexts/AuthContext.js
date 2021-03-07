@@ -89,6 +89,11 @@ export default function AuthProvider({ children }) {
     setUserFavorites([...userFavorites, favorite])
   }
 
+  function removeFavorite(id){
+    const newFavorites = userFavorites.filter(term => term.id !== id)
+    setUserFavorites(newFavorites)
+  }
+
   useEffect(() => {
     const changeUserState = auth.onAuthStateChanged(user => {
       if (user) {
@@ -110,6 +115,7 @@ export default function AuthProvider({ children }) {
     updateName,
     querySearchTerms,
     storeUserFavorites,
+    removeFavorite,
     resetSearchData,
     termData,
     termName

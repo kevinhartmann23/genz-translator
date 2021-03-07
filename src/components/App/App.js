@@ -6,6 +6,7 @@ import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
 import SearchForm from '../SearchForm/SearchForm'
 import ResultsDisplay from '../ResultsDisplay/ResultsDisplay'
+import CheatSheet from '../CheatSheet/CheatSheet'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -47,10 +48,8 @@ const App = () => {
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <Route path='/search' component={SearchForm} />
-            <Route 
-              path='/results/:query'
-              component={ResultsDisplay} 
-              />
+            <Route path='/results/:query'component={ResultsDisplay} />
+            <Route path='/cheatsheet' component={CheatSheet} />
           </Switch>
         </AuthProvider>
       </ThemeProvider>
