@@ -24,7 +24,8 @@ function AccountInfo() {
   const [activeTab, setActiveTab] = useState(0)
   const [inputValue, setInputValue] = useState('')
   const [theme, setTheme] = useState('original')
-  const { currentUser, updateTheme } = useAuth()
+  const [success, setSuccess] = useState('')
+  const { currentUser, updateTheme, updateName } = useAuth()
   const { displayName, photoURL, email, emailVerified, metadata } = currentUser
   const { lastSignInTime, creationTime } = metadata
 
@@ -54,14 +55,23 @@ function AccountInfo() {
 
   const handleSelect = (event) => {
     event.preventDefault()
-    console.log(event.target.value)
     setTheme(event.target.value)
   }
 
   const changeTheme = (event) => {
     event.preventDefault()
-    console.log(theme)
     updateTheme(theme)
+    setSuccess(`Theme has been updated to ${theme}`)
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    try {
+      const newName = await updateName(inputValue)
+      await setSuccess('Your account has been updated!')
+    } catch (err) {
+
+    }
   }
 
   return (
@@ -117,7 +127,7 @@ function AccountInfo() {
                     </div>
                     <label htmlFor='name'>Update Name:</label>
                     <TextField id='name' style={{marginBottom: '.25rem'}} placeholder={displayName ? displayName : 'unknown'} value={inputValue} onChange={handleInput} fullWidth />
-                    <Button style={{ marginBottom: '1rem' }}>Update</Button>
+                    <Button style={{ marginBottom: '1rem' }} onClick={handleSubmit}>Update</Button>
                 <Fieldset label='Set Theme:' style={{display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
                       <Select
                         defaultValue={'original'}
@@ -133,8 +143,9 @@ function AccountInfo() {
               </div>
             }
           </TabBody>
-          <div className='footer-container'>
-            <p className='footer-title'>My Account</p>
+          <div className='footer-container-account' style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+            <p style={{textAlign:'center', width: '100%'}}>{success}</p>
+            <p style={{textAlign:'center', width: '100%'}} className='footer-title'>My Account</p>
           </div>
         </WindowContent>
       </Window>
