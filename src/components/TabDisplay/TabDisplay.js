@@ -18,11 +18,13 @@ import {
 const TabDisplay = ({term, id}) => {
   const {word, definition, example, thumbs_up, thumbs_down, } = term
   const [savedState, setSaveState] = useState(xMark)
+  const [disabled, setDisabled] = useState(false)
   const { storeUserFavorites, termData } = useAuth()
 
   const handleClick = (event) => {
     event.preventDefault()
     setSaveState(checkMark)
+    setDisabled(true)
     const favoritedTerm = termData[parseInt(event.target.id)]
     storeUserFavorites(favoritedTerm)
   }
@@ -60,9 +62,16 @@ const TabDisplay = ({term, id}) => {
                 </div>
               </ListItem>
             </List>
-            <Tooltip text='Save to Cheet Sheet' enterDelay={100} leaveDelay={100}>
+            {!disabled && <Tooltip text='Save to Cheet Sheet' enterDelay={100} leaveDelay={100}>
               <Button id={id} style={{ width: '3.5rem', height: '3.5rem' }} onClick={handleClick}><img style={{ height: '2.5rem', width: '2.5rem' }} src={addButton} alt='save to cheatsheet' /></Button>
             </Tooltip>
+            }
+            {disabled && <Tooltip text='Term Saved!' enterDelay={100} leaveDelay={100}>
+              <Panel variant='well' style={{ width: '3.5rem', height: '3.5rem', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <img style={{ height: '2.5rem', width: '2.5rem' }} src={addButton} alt='save to cheatsheet' />
+              </Panel>
+            </Tooltip>
+            }
           </Panel>
         </div>
       </Fieldset>
