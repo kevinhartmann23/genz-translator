@@ -40,3 +40,5 @@ const emojiData = [
     definition: 'frustration'
   },
 ]
+
+export default emojiData

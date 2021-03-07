@@ -7,6 +7,8 @@ import Sidebar from '../Sidebar/Sidebar'
 import SearchForm from '../SearchForm/SearchForm'
 import ResultsDisplay from '../ResultsDisplay/ResultsDisplay'
 import CheatSheet from '../CheatSheet/CheatSheet'
+import TopTerms from '../TopTerms/TopTerms'
+import EmojiGuide from '../EmojiGuide/EmojiGuide'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -50,8 +52,8 @@ const App = () => {
             <Route path='/search' component={SearchForm} />
             <Route path='/results/:query'component={ResultsDisplay} />
             <Route path='/cheatsheet' component={CheatSheet} />
-            <Route path='/hipterms' component={} />
-            <Route path='/emojiguide' component={} />
+            <Route path='/hipterms' component={TopTerms} />
+            <Route path='/emojiguide' component={EmojiGuide} />
           </Switch>
         </AuthProvider>
       </ThemeProvider>
