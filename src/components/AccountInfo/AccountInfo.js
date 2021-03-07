@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import userIcon from '../../assets/icons/user.png'
 import checkMark from '../../assets/icons/check.png'
 import xMark from '../../assets/icons/x.png'
-import TabDisplay from '../TabDisplay/TabDisplay'
 
 import {
   Window,
@@ -21,13 +20,28 @@ import {
 } from 'react95'
 
 function AccountInfo() {
+  const { currentUser, updateTheme, updateName, displayTheme } = useAuth()
   const [activeTab, setActiveTab] = useState(0)
   const [inputValue, setInputValue] = useState('')
-  const [theme, setTheme] = useState('original')
+  const [theme, setTheme] = useState(displayTheme)
   const [success, setSuccess] = useState('')
-  const { currentUser, updateTheme, updateName } = useAuth()
-  const { displayName, photoURL, email, emailVerified, metadata } = currentUser
-  const { lastSignInTime, creationTime } = metadata
+  let displayName
+  let photoURL
+  let email
+  let emailVerified
+  let metadata
+  let lastSignInTime
+  let creationTime
+  
+  if(currentUser){
+    displayName = currentUser.displayName
+    photoURL = currentUser.photoURL
+    email = currentUser.email
+    emailVerified = currentUser.emailVerified
+    metadata = currentUser.metadata
+    lastSignInTime = metadata.lastSignInTime
+    creationTime = metadata.creationTime
+  }
 
   const options = [
     { value: 'original', label: 'original' },
@@ -74,8 +88,16 @@ function AccountInfo() {
     }
   }
 
+  useEffect(() => {
+    setSuccess('')
+    setTheme(displayTheme)
+    setInputValue('')
+  }, [activeTab])
+
   return (
     <>
+      {!currentUser && <Redirect to="/login" />}
+      {currentUser && 
       <Window style={{ width: '40%', height: '90%', marginTop: '3.5rem', right: '10%' }}>
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>Account</span>
@@ -123,7 +145,7 @@ function AccountInfo() {
                         <p style={{ marginRight: '.125rem', fontSize: '.75rem' }}>Verified:</p>
                         <img style={{ width: '1rem', height: '1rem' }} src={emailVerified ? checkMark : xMark} alt='item unsaved' />
                       </div>
-                      <Button id='verify-email' style={{ marginBottom: '1rem', marginTop:'1rem', height: '3rem' }}>Verify: {email}</Button>
+                      <Button disabled id='verify-email' style={{ marginBottom: '1rem', marginTop:'1rem', height: '3rem' }}>Verify: {email}</Button>
                     </div>
                     <label htmlFor='name'>Update Name:</label>
                     <TextField id='name' style={{marginBottom: '.25rem'}} placeholder={displayName ? displayName : 'unknown'} value={inputValue} onChange={handleInput} fullWidth />
@@ -149,6 +171,7 @@ function AccountInfo() {
           </div>
         </WindowContent>
       </Window>
+      }
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import topTermsData from './topTermsData'
+import { useAuth } from '../../contexts/AuthContext';
 
 import {
   Window,
@@ -16,7 +17,7 @@ import {
 } from 'react95'
 
 const TopTerms = () => {
-  
+  const { currentUser } = useAuth()
   const data = topTermsData.map(term => {
     return (
       <TableRow>
@@ -30,6 +31,8 @@ const TopTerms = () => {
 
   return (
       <div>
+        {!currentUser && <Redirect to="/login" />}
+        {currentUser && 
         <Window style={{ width: '80vw', height: '80vh', marginTop: '5rem', right: '5%' }}>
           <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <span>Hip Terms</span>
@@ -53,6 +56,7 @@ const TopTerms = () => {
             </Table>
           </WindowContent>
         </Window>
+        }
       </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import {useAuth} from '../../contexts/AuthContext'
 import emojiData from './emojiData'
 
 import {
@@ -16,7 +17,7 @@ import {
 } from 'react95'
 
 const EmojiGuide = () => {
-  
+  const {currentUser} = useAuth()
   const data = emojiData.map(emoji => {
     return (
       <TableRow>
@@ -31,7 +32,9 @@ const EmojiGuide = () => {
   })
   
   return (
-    <div>
+    <>
+      {!currentUser && <Redirect to="/login" />}
+      {currentUser && 
       <Window style={{ width: 'auto', height:'auto', marginTop: '10rem', right:'10%' }}>
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>Emoji Guide</span>
@@ -55,7 +58,8 @@ const EmojiGuide = () => {
           </Table>
         </WindowContent>
       </Window>
-    </div>
+      }
+    </>
   );
 };
 

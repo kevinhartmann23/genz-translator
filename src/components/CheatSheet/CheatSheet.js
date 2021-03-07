@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react' 
 import FavoriteCard from '../FavoriteCard/FavoritesCard'
 import { useAuth } from '../../contexts/AuthContext'
-import {Link} from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import {
   Window,
   WindowHeader,
@@ -10,7 +10,7 @@ import {
 } from 'react95'
 
 const CheatSheet = () => {
-  const { userFavorites } = useAuth()
+  const { userFavorites, currentUser } = useAuth()
   
   let favoritesDisplay = userFavorites.map(fav => <FavoriteCard data={fav}/>)
   
@@ -20,6 +20,8 @@ const CheatSheet = () => {
 
   return (
     <>
+      {!currentUser && <Redirect to="/login" />}
+      {currentUser && 
       <Window style={{ width: '85%', height: '90%', marginTop: '3.5rem', right: '6%' }}>
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>My Lingo Cheat Sheet!</span>
@@ -33,6 +35,7 @@ const CheatSheet = () => {
           {favoritesDisplay}
         </WindowContent>
       </Window>
+      }
     </>
   )
 }
