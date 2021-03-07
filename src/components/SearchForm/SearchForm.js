@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react' 
 import { Link, Redirect } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
+import { useApp } from '../../contexts/AppContext'
 import searchTerms from '../../assets/icons/search_terms.png'
 import './SearchForm.css'
 
@@ -19,7 +20,9 @@ const SearchForm = () => {
   const [loading, setLoading] = useState(false)
   const [searchValue, setSearch] = useState('')
   const [formatValue, setFormatValue] = useState('')
-  const { querySearchTerms, termData, resetSearchData, currentUser } = useAuth()
+  const { currentUser } = useAuth()
+  const { querySearchTerms, termData, resetSearchData } = useApp()
+
   
   const handleChange = (event) => {
     event.preventDefault()

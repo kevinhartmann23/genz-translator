@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { useAuth } from '../../contexts/AuthContext'
+import { useApp } from '../../contexts/AppContext'
 import addButton from '../../assets/icons/add.png'
 import checkMark from '../../assets/icons/check.png'
 import xMark from '../../assets/icons/x.png'
@@ -19,7 +19,7 @@ const TabDisplay = ({term, id}) => {
   const {word, definition, example, thumbs_up, thumbs_down, } = term
   const [savedState, setSaveState] = useState(xMark)
   const [disabled, setDisabled] = useState(false)
-  const { storeUserFavorites, termData } = useAuth()
+  const { storeUserFavorites, termData } = useApp()
 
   const handleClick = (event) => {
     event.preventDefault()

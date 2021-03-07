@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
+import { useApp } from '../../contexts/AppContext'
 import userIcon from '../../assets/icons/user.png'
 import checkMark from '../../assets/icons/check.png'
 import xMark from '../../assets/icons/x.png'
@@ -20,7 +21,8 @@ import {
 } from 'react95'
 
 function AccountInfo() {
-  const { currentUser, updateTheme, updateName, displayTheme } = useAuth()
+  const { updateTheme, displayTheme } = useApp()
+  const { currentUser, updateName } = useAuth()
   const [activeTab, setActiveTab] = useState(0)
   const [inputValue, setInputValue] = useState('')
   const [theme, setTheme] = useState(displayTheme)

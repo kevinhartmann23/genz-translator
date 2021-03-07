@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Clock from '../Clock/Clock'
 import { Redirect, Link } from 'react-router-dom';
 import logout from '../../assets/icons/logout.png';
 import account from '../../assets/icons/account.png';
 import { useAuth } from '../../contexts/AuthContext';
+import { useApp } from '../../contexts/AppContext';
 
 import './Header.css'
 
@@ -17,7 +18,8 @@ import {
 } from 'react95';
 
 const Header = () => {
-  const { signOut, currentUser, updateTheme } = useAuth()
+  const { signOut, currentUser } = useAuth()
+  const { updateTheme } = useApp()
   const [open, setOpen] = useState(false);
 
   async function handleLogout(event) {
