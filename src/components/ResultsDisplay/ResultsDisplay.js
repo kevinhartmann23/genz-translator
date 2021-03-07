@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import TabDisplay from '../TabDisplay/TabDisplay'
-import addButton from '../../assets/icons/add.png'
-import checkMark from '../../assets/icons/check.png'
-import xMark from '../../assets/icons/x.png'
 
 import './ResultsDisplay.css'
 
@@ -15,19 +12,12 @@ import {
   Tab,
   Tabs,
   TabBody,
-  Fieldset,
-  Button,
-  Panel,
-  Divider,
-  List,
-  ListItem,
-  Tooltip
+  Button
 } from 'react95'
 
 const ResultsDisplay = () => {
   const [activeTab, setActiveTab] = useState(0)
-  const [savedState, setSaveState] = useState(xMark)
-  const { termData, termName, storeUserFavorites, resetSearchData } = useAuth()
+  const { termData, termName, resetSearchData } = useAuth()
   const displayTermName = termName.replace(/%20/g, " ")
 
   const definitionTabs = termData.map((term, i) => <Tab value={i} key={i} id={i}>{`Definition ${i+1}`}</Tab>)
@@ -39,17 +29,9 @@ const ResultsDisplay = () => {
     setActiveTab(parseInt(event.target.id))
   }
 
-  // const handleClick = (event) => {
-  //   event.preventDefault()
-  //   setSaveState(checkMark)
-  //   const favoritedTerm = termData[activeTab]
-  //   storeUserFavorites(favoritedTerm)
-  // }
-
   useEffect(() => {
     if (termData.length === 0) {
       resetSearchData()
-      setSaveState(xMark)
       setActiveTab(0)
     }
   }, [])
@@ -84,7 +66,3 @@ const ResultsDisplay = () => {
 }
 
 export default ResultsDisplay
-
-  // < Tooltip text = 'Save to Cheet Sheet' enterDelay = { 100} leaveDelay = { 100} >
-  //   <Button style={{ width: '3.5rem', height: '3.5rem' }} onClick={handleClick}><img style={{ height: '2.5rem', width: '2.5rem' }} src={addButton} alt='save to cheatsheet' /></Button>
-  //           </Tooltip >
