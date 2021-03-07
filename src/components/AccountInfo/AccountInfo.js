@@ -83,7 +83,7 @@ function AccountInfo() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      const newName = await updateName(inputValue)
+      await updateName(inputValue)
       await setSuccess('Your account has been updated!')
     } catch (err) {
 
@@ -92,7 +92,6 @@ function AccountInfo() {
 
   useEffect(() => {
     setSuccess('')
-    setTheme(displayTheme)
     setInputValue('')
   }, [activeTab])
 
@@ -154,7 +153,7 @@ function AccountInfo() {
                     <Button style={{ marginBottom: '1rem' }} onClick={handleSubmit}>Update</Button>
                 <Fieldset label='Set Theme:' style={{display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
                       <Select
-                        defaultValue={'original'}
+                        defaultValue={displayTheme}
                         value={theme}
                         options={options}
                         menuMaxHeight={160}

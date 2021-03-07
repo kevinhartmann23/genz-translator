@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react' 
+import React, { useEffect, useState } from 'react' 
 import FavoriteCard from '../FavoriteCard/FavoritesCard'
 import { useAuth } from '../../contexts/AuthContext'
 import { useApp } from '../../contexts/AppContext'
@@ -13,11 +13,15 @@ import {
 const CheatSheet = () => {
   const { currentUser } = useAuth()
   const { userFavorites } = useApp()
+  const [favoritesDisplay, setFavoritesDisplay] = useState()
   
-  let favoritesDisplay = userFavorites.map(fav => <FavoriteCard data={fav}/>)
-  
+  function resetUserFavorites(favorites) {
+    const display = favorites.map((fav, i) => <FavoriteCard key={i} data={fav} />)
+    setFavoritesDisplay(display)
+  }
+
   useEffect(() => {
-   favoritesDisplay = userFavorites.map(fav => <FavoriteCard data={fav} />)
+   resetUserFavorites(userFavorites)
   }, [userFavorites])
 
   return (
