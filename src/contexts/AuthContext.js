@@ -38,7 +38,7 @@ export default function AuthProvider({ children }) {
     try {
       const result = await auth.signInWithPopup(verifiedProvider)
       const credential = await result.credential
-      const token = await credential.accessToken
+      await credential.accessToken
       await setCurrentUser(auth.currentUser)
     } catch (error) {
       alert(error.message)

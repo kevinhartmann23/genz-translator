@@ -37,7 +37,7 @@ const ResultsDisplay = () => {
       resetSearchData()
       setActiveTab(0)
     }
-  }, [])
+  }, [termData.length, resetSearchData])
 
   return (
     <>
