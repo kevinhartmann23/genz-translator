@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import addButton from '../../assets/icons/add.png'
 import checkMark from '../../assets/icons/check.png'
 import xMark from '../../assets/icons/x.png'
 
 import {
-  Window,
-  WindowHeader,
-  WindowContent,
-  Tab,
-  Tabs,
-  TabBody,
   Fieldset,
   Button,
   Panel,
