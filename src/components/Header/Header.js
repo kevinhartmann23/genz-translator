@@ -17,13 +17,14 @@ import {
 } from 'react95';
 
 const Header = () => {
-  const { signOut, currentUser } = useAuth()
+  const { signOut, currentUser, updateTheme } = useAuth()
   const [open, setOpen] = useState(false);
 
   async function handleLogout(event) {
     event.preventDefault()
     try {
       await signOut()
+      await updateTheme('original')
     } catch (error) {
       console.log('error', error)
     }
