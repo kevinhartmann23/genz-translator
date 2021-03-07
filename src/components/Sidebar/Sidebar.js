@@ -24,11 +24,11 @@ const Sidebar = () => {
             <img className='icon' id='cheat-sheet' src={cheatSheet} alt='View my cheatsheet'/>
             <label htmlFor='cheat-sheet'>Cheat Sheet</label>
           </Link>
-          <Link to='/emoji_guide'>
+          <Link to='/emojiguide'>
             <img className='icon' id='emoji-guide' src={emojiGuide} alt='View emoji guide'/>
             <label htmlFor='emoji-guide'>Emoji Guide</label>
           </Link>
-          <Link to='/hip_terms'>
+          <Link to='/hipterms'>
             <img className='icon' id='top-terms' src={topTerms} alt='View hip terms'/>
             <label htmlFor='top-terms'>Hip Terms</label>
           </Link>

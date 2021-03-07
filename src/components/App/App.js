@@ -50,6 +50,8 @@ const App = () => {
             <Route path='/search' component={SearchForm} />
             <Route path='/results/:query'component={ResultsDisplay} />
             <Route path='/cheatsheet' component={CheatSheet} />
+            <Route path='/hipterms' component={} />
+            <Route path='/emojiguide' component={} />
           </Switch>
         </AuthProvider>
       </ThemeProvider>
