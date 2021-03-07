@@ -9,8 +9,12 @@ import ResultsDisplay from '../ResultsDisplay/ResultsDisplay'
 import CheatSheet from '../CheatSheet/CheatSheet'
 import TopTerms from '../TopTerms/TopTerms'
 import EmojiGuide from '../EmojiGuide/EmojiGuide'
+import About from '../About/About'
+import Resume from '../Resume/Resume'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
+import AccountInfo from '../AccountInfo/AccountInfo'
+
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { styleReset } from 'react95';
 import original from "react95/dist/themes/original";
@@ -54,6 +58,9 @@ const App = () => {
             <Route path='/cheatsheet' component={CheatSheet} />
             <Route path='/hipterms' component={TopTerms} />
             <Route path='/emojiguide' component={EmojiGuide} />
+            <Route path='/about' component={About} />
+            <Route path='/account' component={AccountInfo} />
+            <Route path='/resume' component={Resume} />
           </Switch>
         </AuthProvider>
       </ThemeProvider>
