@@ -10,6 +10,7 @@ import CheatSheet from '../CheatSheet/CheatSheet'
 import TopTerms from '../TopTerms/TopTerms'
 import EmojiGuide from '../EmojiGuide/EmojiGuide'
 import About from '../About/About'
+import Resume from '../Resume/Resume'
 import AuthProvider from '../../contexts/AuthContext'
 import { Switch, Route } from 'react-router-dom';
 import AccountInfo from '../AccountInfo/AccountInfo'
@@ -59,6 +60,7 @@ const App = () => {
             <Route path='/emojiguide' component={EmojiGuide} />
             <Route path='/about' component={About} />
             <Route path='/account' component={AccountInfo} />
+            <Route path='/resume' component={Resume} />
           </Switch>
         </AuthProvider>
       </ThemeProvider>

@@ -1,0 +1,14 @@
+.title-about,
+.slogan-about {
+  font-family: 'VT323', monospace !important;
+  text-align: center;
+}
+
+.title-about {
+  font-size: 4rem !important;
+  height: 4rem;
+}
+
+.slogan-about {
+
+}
