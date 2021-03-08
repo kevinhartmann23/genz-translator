@@ -32,7 +32,7 @@ export default function AppProvider({ children }) {
         await setTermData(sortedData)
       }
     } catch (error) {
-      console.log(error)
+      setError(true)
     }
   }
 
