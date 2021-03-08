@@ -186,13 +186,11 @@ Now that you are inside the dashboard, a user can navigate in two ways.
 ### Search Terms and Lingo
 On selecting the search icon, a user can search any term they have heard and want a defintion for.
 
-![Search Term]()
-
 The user can then view the results. Behind the hood, GenZtoA has filtered the search results from `Urban Dictionary` by most thumbs up and is deconstructing the search results to display the top 3 popular terms, voted by the people!
 
 For each term a definition, example, and other information is provided. A user can then save any term to their cheat sheet at anytime.
 
-![Cheat Cheet]()
+![Cheat Cheet](https://media.giphy.com/media/jBgnw1b88JL1DyYX1J/giphy.gif)
 
 **Future Iterations**
 - Add Filter to Search Results, some results can be vulgar or unexpected. By adding a filter and check for certain key terms can increase user experience
