@@ -14,7 +14,7 @@ import Resume from '../Resume/Resume'
 import AccountInfo from '../AccountInfo/AccountInfo'
 import NotFound from '../NotFound/NotFound'
 import { useApp } from '../../contexts/AppContext'
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { styleReset } from 'react95';
@@ -53,7 +53,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const App = () => {
-  const { displayTheme } = useApp()
+  const { displayTheme, appError } = useApp()
   let theme
 
   if(displayTheme === 'vaporTeal'){
@@ -86,6 +86,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Header />
         <Sidebar />
+        {appError && <Redirect to='/error' />}
         <Switch>
           <Route path='/' exact component={Dashboard} />
           <Route path='/login' component={Login} />
@@ -98,6 +99,7 @@ const App = () => {
           <Route path='/about' component={About} />
           <Route path='/account' component={AccountInfo} />
           <Route path='/resume' component={Resume} />
+          <Route path='/error' component={NotFound} />
           <Route component={NotFound} />
         </Switch>
       </ThemeProvider>

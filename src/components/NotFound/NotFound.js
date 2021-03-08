@@ -24,7 +24,7 @@ function NotFound() {
           </WindowHeader>
           <WindowContent style={{display:'flex', flexDirection:'column', justifyContent:'space-between', width:'95%', height:'90%', alignItems:'center'}}>
           <img style={{ height: '20rem', width: '20rem'}} src={notFound} alt='Error' />
-            <p className='title-notfound'style={{textAlign: 'center'}}>Uh Oh! Looks like we can't find the page you are looking for!</p>
+            <p className='title-notfound'style={{textAlign: 'center'}}>Uh Oh! Looks like we can't find the page you are looking for or an error has occured!</p>
             <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center'}}>
               <Link to='/' style={{ width: '2rem' }}>
                 <Button style={{ fontWeight: 'bold', fontSize:'2rem', width:'20rem', height:'5rem'}}>
