@@ -60,9 +60,9 @@ const SearchForm = () => {
     <>
       {!currentUser && <Redirect to="/login" />}
       {currentUser && 
-      <Window className='window' style={{ width: '30rem', height:'auto', alignSelf: 'center', right:'30%', display:'flex', flexDirection:'column'}}>
+      <Window className='window' style={{ width: '40rem', height:'auto', alignSelf: 'center', display:'flex', flexDirection:'column', marginLeft:'10%', marginRight: '10%'}}>
           <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-          <span>GenZ Lingo Search</span>
+          <span>Search</span>
           <Link to='/' style={{width:'2rem'}}>
             <Button className='back-button' style={{ fontWeight: 'bold' }}>
               X
