@@ -24,12 +24,11 @@ export default function AppProvider({ children }) {
 
     try {
       const result = await apiCalls.requestTermsInfo(terms)
-      const data = await result.list
-      if(!data.length){
+      if(!result.length){
         setError(true)
       } else {
         setError(false)
-        const sortedData = await sortIncomingData(data)
+        const sortedData = await sortIncomingData(result)
         await setTermData(sortedData)
       }
     } catch (error) {
