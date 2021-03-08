@@ -11,9 +11,10 @@ import TopTerms from '../TopTerms/TopTerms'
 import EmojiGuide from '../EmojiGuide/EmojiGuide'
 import About from '../About/About'
 import Resume from '../Resume/Resume'
+import AccountInfo from '../AccountInfo/AccountInfo'
+import NotFound from '../NotFound/NotFound'
 import { useApp } from '../../contexts/AppContext'
 import { Switch, Route } from 'react-router-dom';
-import AccountInfo from '../AccountInfo/AccountInfo'
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { styleReset } from 'react95';
@@ -86,7 +87,7 @@ const App = () => {
           <Header />
           <Sidebar />
           <Switch>
-            <Route exact path='/' component={Dashboard} />
+            <Route path='/' exact component={Dashboard} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <Route path='/search' component={SearchForm} />
@@ -97,6 +98,7 @@ const App = () => {
             <Route path='/about' component={About} />
             <Route path='/account' component={AccountInfo} />
             <Route path='/resume' component={Resume} />
+            <Route component={NotFound} />
           </Switch>
         </ThemeProvider>
     </main>
