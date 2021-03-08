@@ -10,6 +10,7 @@ export function useApp() {
 export default function AppProvider({ children }) {
   const [termName, setTermName] = useState('')
   const [termData, setTermData] = useState([])
+  const [error, setError] = useState(false)
   const [userFavorites, setUserFavorites] = useState([])
   const [displayTheme, setDisplayTheme] = useState('original')
 
@@ -24,8 +25,13 @@ export default function AppProvider({ children }) {
     try {
       const result = await apiCalls.requestTermsInfo(terms)
       const data = await result.list
-      const sortedData = await sortIncomingData(data)
-      await setTermData(sortedData)
+      if(!data.length){
+        setError(true)
+      } else {
+        setError(false)
+        const sortedData = await sortIncomingData(data)
+        await setTermData(sortedData)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -34,6 +40,7 @@ export default function AppProvider({ children }) {
   function resetSearchData() {
     setTermData([])
     setTermName('')
+    setError(false)
   }
 
   function storeUserFavorites(term) {
@@ -56,15 +63,17 @@ export default function AppProvider({ children }) {
   }
 
   const value = {
-    userFavorites,
     querySearchTerms,
     storeUserFavorites,
     removeFavorite,
     resetSearchData,
     updateTheme,
+    setError,
+    userFavorites,
     displayTheme,
     termData,
-    termName
+    termName,
+    error
   }
 
   return (

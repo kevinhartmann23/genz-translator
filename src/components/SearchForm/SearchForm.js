@@ -21,7 +21,7 @@ const SearchForm = () => {
   const [searchValue, setSearch] = useState('')
   const [formatValue, setFormatValue] = useState('')
   const { currentUser } = useAuth()
-  const { querySearchTerms, termData, resetSearchData } = useApp()
+  const { querySearchTerms, termData, resetSearchData, error, setError } = useApp()
 
   
   const handleChange = (event) => {
@@ -39,7 +39,7 @@ const SearchForm = () => {
       await querySearchTerms(formattedTerm)
       await setLoading(false)
     } catch(error){
-      console.log(error)
+      setError(true)
     }
   }
 
@@ -49,6 +49,10 @@ const SearchForm = () => {
       setSearch('')
     }
   }, [termData.length, resetSearchData])
+
+  useEffect(() => {
+    setError(false)
+  }, [setError])
 
   
   return (
@@ -100,6 +104,13 @@ const SearchForm = () => {
                 </Link>
               </Panel>
             </div>
+        }
+        {error &&
+          <div className='loading-container'>
+            <Panel variant='well' style={{ width: '100%', padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`No results found for ${searchValue.toUpperCase()}...`}</p>
+            </Panel>
+          </div>
         }
       </Window> 
       }
