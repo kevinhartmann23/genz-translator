@@ -24,7 +24,7 @@ const CheatSheet = () => {
 
   useEffect(() => {
    resetUserFavorites(userFavorites)
-  }, [userFavorites])
+  }, [userFavorites]) 
 
   return (
     <>

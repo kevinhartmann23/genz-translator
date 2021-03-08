@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useApp } from '../../contexts/AppContext'
 import addButton from '../../assets/icons/add.png'
@@ -19,33 +19,47 @@ const TabDisplay = ({term, id}) => {
   const {word, definition, example, thumbs_up, thumbs_down, } = term
   const [savedState, setSaveState] = useState(xMark)
   const [disabled, setDisabled] = useState(false)
-  const { storeUserFavorites, termData } = useApp()
+  const { storeUserFavorites, termData, message, setMessage, userFavorites } = useApp()
 
+  const checkSaved = () => {
+    const validateTerm = userFavorites.find(info => info.definition === definition)
+    
+    if(validateTerm){
+      setMessage('This message is on your cheat sheet!')
+      setSaveState(checkMark)
+      setDisabled(true)
+    }
+  }
+  
   const handleClick = (event) => {
     event.preventDefault()
     setSaveState(checkMark)
+    setMessage('This message is on your cheat sheet!')
     setDisabled(true)
     const favoritedTerm = termData[parseInt(event.target.id)]
     storeUserFavorites(favoritedTerm)
   }
 
+  useEffect(() => {
+    checkSaved()
+  }, [])
+
   return (
     <div>
       <Fieldset label={`${word}`} style={{ marginBottom: '.5rem' }}>
         <div style={{ padding: '0.5em 0 0.5em 0' }}>Definition:</div>
-        <Panel className='term-definition' variant='well' style={{ width: '100%', height: 'auto', padding: '1rem' }}>
+        <Panel className='term-definition' variant='well' style={{ width: '100%', height: '2.5rem', padding: '.5rem', overflow:'scroll' }}>
           {definition}
         </Panel>
       </Fieldset>
       <Fieldset label='Example:' style={{ marginBottom: '.5rem' }}>
         <div style={{ padding: '0.5em 0 0.5em 0' }}>Used In Sentence(s):</div>
-        <Panel className='term-example' variant='well' style={{ width: '100%', padding: '1rem', height: '6rem', overflow: 'scroll' }}>
+        <Panel className='term-example' variant='well' style={{ width: '100%', padding: '.5rem', height: '3rem', overflow: 'scroll' }}>
           {example}
         </Panel>
       </Fieldset>
       <Fieldset label='Other:' style={{ marginBottom: '.5rem' }}>
-        <div className='other-panel' style={{ width: '100%' }}>
-          <Panel variant='well' style={{ width: '100%', height: '4rem', padding: '1rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className='other-panel' style={{ width: '100%', height: '3rem', padding: '0rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <List inline style={{ margin: '.5rem', height: '3rem' }}>
               <ListItem className='term-up'>
                 {`Thumbs Up: ${thumbs_up}`}
@@ -72,9 +86,9 @@ const TabDisplay = ({term, id}) => {
               </Panel>
             </Tooltip>
             }
-          </Panel>
         </div>
       </Fieldset>
+      {message && <p className='saved-message' style={{width:'100%', textAlign:'center'}}>{message}</p>}
     </div>
   )
 }

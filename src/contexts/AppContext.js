@@ -52,7 +52,11 @@ export default function AppProvider({ children }) {
       word,
       definition,
     }
-    setUserFavorites([...userFavorites, favorite])
+    if(userFavorites.find(term => term.definition === favorite.definition)){
+      setMessage('You have already added this definition!')
+    } else {
+      setUserFavorites([...userFavorites, favorite])
+    }
   }
 
   function removeFavorite(id) {

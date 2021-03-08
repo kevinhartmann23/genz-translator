@@ -26,7 +26,7 @@ const ResultsDisplay = () => {
   const definitionTabs = termData.map((term, i) => <Tab value={i} key={i} id={i}>{`Definition ${i+1}`}</Tab>)
 
   const wordInfo = termData.map((term, i) => <TabDisplay key={i} term={term} id={i} />)
-
+  
   const handleChange = (event) => {
     event.preventDefault()
     setActiveTab(parseInt(event.target.id))
@@ -40,7 +40,7 @@ const ResultsDisplay = () => {
     <>
       {!currentUser && <Redirect to="/login" />}
       {currentUser && 
-      <Window style={{ width:'60%', height:'90%', marginTop:'3.5rem', right:'10%' }}>
+      <Window style={{ width:'70%', height:'90%', marginTop:'3.5rem', right:'10%' }}>
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>Results for {displayTermName}...</span>
           <Link to='/' style={{ width: '2rem' }}>
@@ -58,7 +58,7 @@ const ResultsDisplay = () => {
             {activeTab === 1 && wordInfo[1]}
             {activeTab === 2 && wordInfo[2]}
           </TabBody>
-          <div className='footer-container'>
+          <div className='footer-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <p className='footer-title'>Add To Cheet Sheet</p>
           </div>
         </WindowContent>

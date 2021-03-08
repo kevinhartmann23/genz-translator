@@ -33,6 +33,7 @@ describe('Results Display', () => {
   it('Should save results to cheat sheet if user chooses to', () => {
     cy 
       .get('.save-button').click()
+      .get('.saved-message').should('have.text', 'This message is on your cheat sheet!')
   })
 
   it('Should display saved items to user cheatsheet', () => {
