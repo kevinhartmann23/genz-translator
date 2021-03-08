@@ -21,7 +21,7 @@ const SearchForm = () => {
   const [searchValue, setSearch] = useState('')
   const [formatValue, setFormatValue] = useState('')
   const { currentUser } = useAuth()
-  const { querySearchTerms, termData, resetSearchData, error, setError } = useApp()
+  const { querySearchTerms, termData, resetSearchData, appError, setAppError, message, setMessage } = useApp()
 
   
   const handleChange = (event) => {
@@ -40,7 +40,7 @@ const SearchForm = () => {
       await querySearchTerms(formattedTerm)
       await setLoading(false)
     } catch(error){
-      setError(true)
+      setAppError(error)
     }
   }
 
@@ -52,8 +52,9 @@ const SearchForm = () => {
   }, [])
 
   useEffect(() => {
-    setError(false)
-  }, [setError])
+    setMessage()
+    setAppError()
+  }, [setAppError, setMessage])
 
   
   return (
@@ -98,7 +99,7 @@ const SearchForm = () => {
         {termData.length > 0 && 
             <div className='loading-container'>
               <Panel variant='well' style={{ width: '100%', padding: '1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }}>
-                <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${searchValue.toUpperCase()}...`}</p>
+            <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${formatValue.replace(/%20/g, " ")}...`}</p>
                 <Progress hideValue value={100} style={{ width: '100%', height:'2rem' }}  />
                 <Link to={`/results/${formatValue}`} style={{width:'40%', marginTop:'.5rem'}}>
                   <Button style={{ width: '100%' }}>View Results</Button>
@@ -106,13 +107,21 @@ const SearchForm = () => {
               </Panel>
             </div>
         }
-        {error &&
+        {message &&
           <div className='loading-container'>
             <Panel variant='well' style={{ width: '100%', padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`No results found for ${searchValue.toUpperCase()}...`}</p>
+              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{message}</p>
             </Panel>
           </div>
         }
+        {appError &&
+          <div className='loading-container'>
+            <Panel variant='well' style={{ width: '100%', padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{appError}</p>
+            </Panel>
+          </div>
+        }
+
       </Window> 
       }
     </>
