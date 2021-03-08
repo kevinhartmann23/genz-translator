@@ -48,7 +48,7 @@ const SearchForm = () => {
       resetSearchData()
       setSearch('')
     }
-  }, [termData.length, resetSearchData])
+  }, [])
 
   useEffect(() => {
     setMessage()
