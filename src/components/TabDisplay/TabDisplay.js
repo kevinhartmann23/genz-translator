@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useApp } from '../../contexts/AppContext'
 import addButton from '../../assets/icons/add.png'
@@ -19,8 +19,18 @@ const TabDisplay = ({term, id}) => {
   const {word, definition, example, thumbs_up, thumbs_down, } = term
   const [savedState, setSaveState] = useState(xMark)
   const [disabled, setDisabled] = useState(false)
-  const { storeUserFavorites, termData } = useApp()
+  const { storeUserFavorites, termData, message, setMessage, userFavorites } = useApp()
 
+  const checkSaved = () => {
+    const validateTerm = userFavorites.find(info => info.definition === definition)
+    
+    if(validateTerm){
+      setMessage('This message is already saved!')
+      setSaveState(checkMark)
+      setDisabled(true)
+    }
+  }
+  
   const handleClick = (event) => {
     event.preventDefault()
     setSaveState(checkMark)
@@ -28,6 +38,10 @@ const TabDisplay = ({term, id}) => {
     const favoritedTerm = termData[parseInt(event.target.id)]
     storeUserFavorites(favoritedTerm)
   }
+
+  useEffect(() => {
+    checkSaved()
+  }, [])
 
   return (
     <div>
@@ -75,6 +89,7 @@ const TabDisplay = ({term, id}) => {
           </Panel>
         </div>
       </Fieldset>
+      {message && <p style={{width:'100%', textAlign:'center'}}>{message}</p>}
     </div>
   )
 }

@@ -26,7 +26,7 @@ const ResultsDisplay = () => {
   const definitionTabs = termData.map((term, i) => <Tab value={i} key={i} id={i}>{`Definition ${i+1}`}</Tab>)
 
   const wordInfo = termData.map((term, i) => <TabDisplay key={i} term={term} id={i} />)
-
+  
   const handleChange = (event) => {
     event.preventDefault()
     setActiveTab(parseInt(event.target.id))
@@ -58,7 +58,7 @@ const ResultsDisplay = () => {
             {activeTab === 1 && wordInfo[1]}
             {activeTab === 2 && wordInfo[2]}
           </TabBody>
-          <div className='footer-container'>
+          <div className='footer-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <p className='footer-title'>Add To Cheet Sheet</p>
           </div>
         </WindowContent>
