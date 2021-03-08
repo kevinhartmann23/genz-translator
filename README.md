@@ -2,7 +2,11 @@
 ### Turing School of Software and Design
 
 ### Contributors
-- Kevin Hartmann : [github profile](https://github.com/kevinhartmann23) : [linkedIn](https://www.linkedin.com/in/kevin-hartmann/)
+- Kevin Hartmann: [github profile](https://github.com/kevinhartmann23):[linkedIn](https://www.linkedin.com/in/kevin-hartmann/)
+
+### Reviewers
+- Jeff Duke: _mentor review_
+- Jeff Kersting: _peer review_
 
 
 ### Deployed Site
@@ -156,7 +160,7 @@ You will be greeted with a login page. The login page was designed to be clean a
 username: test@test.com
 password: testing
 ```
-![login]()
+![login](https://media.giphy.com/media/JcyJIYNVlYpPbG7Zer/giphy.gif)
 
 Great! Now let's explore.
 
@@ -203,14 +207,14 @@ While visiting their cheat sheet, a user can deside they've gotten their lingo d
 ### Hip Terms & Emoji Guide
 There are some quick guides for a user to reference as well! Check out the `Hip Terms` or `Emoji Guide` features as well!
 
-![Hip & Emoji]()
+![Hip & Emoji](https://media.giphy.com/media/igkpylE2wZSxJACTV3/giphy.gif)
 
 **Future Iterations**
 - Create a database to update hipterms on amount of searches throughout the app, and highest 'thumbs up' from urban dictionary api.
 ### Account Information
 A user can also view and change their account information but visiting the Account Information page. If a user signs in with an external account some of their information will be added to their GenZtoA account; name, icon. A user can also view some other specified account information, and update their user name. 
 
-![Account]()
+![Account](https://media.giphy.com/media/GSVix8LQrxgrA2sMbF/giphy.gif)
 
 **Future Iterations**
 - Verify unverified emails, with firebase email verification.
