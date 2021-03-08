@@ -1,6 +1,5 @@
-.no-favorites {
+.title-notfound {
   font-family: 'VT323', monospace !important;
-  width: 70%;
-  font-size: 5rem !important;
   text-align: center;
+  font-size: 3rem !important;
 }

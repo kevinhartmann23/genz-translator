@@ -3,6 +3,8 @@ import FavoriteCard from '../FavoriteCard/FavoritesCard'
 import { useAuth } from '../../contexts/AuthContext'
 import { useApp } from '../../contexts/AppContext'
 import { Link, Redirect } from 'react-router-dom'
+import './CheatSheet.css'
+
 import {
   Window,
   WindowHeader,
@@ -38,6 +40,7 @@ const CheatSheet = () => {
           </Link>
         </WindowHeader>
         <WindowContent style={{display:'flex', flexWrap:'wrap', justifyContent:'center', width:'100%', height:'95%', padding:'0', overflow:'scroll'}}>
+          {userFavorites.length === 0 && <p className='no-favorites'>No Favorites Yet!</p>}
           {favoritesDisplay}
         </WindowContent>
       </Window>

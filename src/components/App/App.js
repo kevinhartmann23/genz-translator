@@ -11,9 +11,10 @@ import TopTerms from '../TopTerms/TopTerms'
 import EmojiGuide from '../EmojiGuide/EmojiGuide'
 import About from '../About/About'
 import Resume from '../Resume/Resume'
+import AccountInfo from '../AccountInfo/AccountInfo'
+import NotFound from '../NotFound/NotFound'
 import { useApp } from '../../contexts/AppContext'
 import { Switch, Route } from 'react-router-dom';
-import AccountInfo from '../AccountInfo/AccountInfo'
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { styleReset } from 'react95';
@@ -81,24 +82,25 @@ const App = () => {
   
   return (
     <main className='App'>
-          <GlobalStyles />
-          <ThemeProvider theme={theme}>
-          <Header />
-          <Sidebar />
-          <Switch>
-            <Route exact path='/' component={Dashboard} />
-            <Route path='/login' component={Login} />
-            <Route path='/signup' component={Signup} />
-            <Route path='/search' component={SearchForm} />
-            <Route path='/results/:query'component={ResultsDisplay} />
-            <Route path='/cheatsheet' component={CheatSheet} />
-            <Route path='/hipterms' component={TopTerms} />
-            <Route path='/emojiguide' component={EmojiGuide} />
-            <Route path='/about' component={About} />
-            <Route path='/account' component={AccountInfo} />
-            <Route path='/resume' component={Resume} />
-          </Switch>
-        </ThemeProvider>
+      <GlobalStyles />
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Sidebar />
+        <Switch>
+          <Route path='/' exact component={Dashboard} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <Route path='/search' component={SearchForm} />
+          <Route path='/results/:query'component={ResultsDisplay} />
+          <Route path='/cheatsheet' component={CheatSheet} />
+          <Route path='/hipterms' component={TopTerms} />
+          <Route path='/emojiguide' component={EmojiGuide} />
+          <Route path='/about' component={About} />
+          <Route path='/account' component={AccountInfo} />
+          <Route path='/resume' component={Resume} />
+          <Route component={NotFound} />
+        </Switch>
+      </ThemeProvider>
     </main>
   );
 }
