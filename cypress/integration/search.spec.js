@@ -1,8 +1,10 @@
 const baseUrl = 'http://localhost:3000/login'
 const userEmail = 'test@test.com'
 const userPassword = 'testing'
+const apiUrl = 'https://mashape-community-urban-dictionary.p.rapidapi.com/define?term='
 
 describe('Search From', () => {
+  
   it('Should visit search path on clicking the search icon', () => {
     cy 
       .visit(baseUrl)
@@ -15,6 +17,8 @@ describe('Search From', () => {
   })
 
   it('Should allow a user to type in a search term', () => {
+    cy.intercept('GET', `${apiUrl}akjsdhfkga`, {statusCode: 200, body: {"list": []} })
+    
     cy
       .get('input').type('akjsdhfkga')
       .get('.search-button').click()
@@ -34,6 +38,8 @@ describe('Search From', () => {
   })
 
   it('Should allow user to submit their search', () => {
+    cy.intercept('GET', `${apiUrl}lit`, { fixture: 'searchLitData' })
+    
     cy 
       .get('#search-terms').click()
       .get('input').type('lit')
