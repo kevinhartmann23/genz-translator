@@ -21,10 +21,10 @@ const FavoriteCard = ({data}) => {
     <div style={{width:'13rem', height:'13rem', margin:'2rem'}}>
       <Fieldset label={`${word}`} style={{ marginBottom: '.5rem', width:'inherit' }} key={id}>
         <div style={{ padding: '0.5em 0 0.5em 0' }}>Definition:</div>
-        <Panel variant='well' style={{ width: '14rem', padding: '1rem', height: '6rem', overflow: 'scroll' }}>
+        <Panel className="fav-definition" variant='well' style={{ width: '14rem', padding: '1rem', height: '6rem', overflow: 'scroll' }}>
           {definition}
         </Panel>
-        <Button id={id} onClick={handleClick}><img src={deleteButton} alt='remove from cheet sheat'/></Button>
+        <Button className='delete-button'id={id} onClick={handleClick}><img src={deleteButton} alt='remove from cheet sheat'/></Button>
       </Fieldset>
     </div>
   )
