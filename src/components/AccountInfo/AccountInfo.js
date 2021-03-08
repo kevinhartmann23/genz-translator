@@ -150,9 +150,10 @@ function AccountInfo() {
                     </div>
                     <label htmlFor='name'>Update Name:</label>
                     <TextField id='name' style={{marginBottom: '.25rem'}} placeholder={displayName ? displayName : 'unknown'} value={inputValue} onChange={handleInput} fullWidth />
-                    <Button style={{ marginBottom: '1rem' }} onClick={handleSubmit}>Update</Button>
+                    <Button className='update-button' style={{ marginBottom: '1rem' }} onClick={handleSubmit}>Update</Button>
                 <Fieldset label='Set Theme:' style={{display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
                       <Select
+                        className='theme-option'
                         defaultValue={displayTheme}
                         value={theme}
                         options={options}
@@ -160,14 +161,14 @@ function AccountInfo() {
                         width={200}
                         onChange={handleSelect}
                       />
-                      <Button onClick={changeTheme}>Apply</Button>
+                      <Button className='apply-button' onClick={changeTheme}>Apply</Button>
                     </Fieldset>
                   </Fieldset>
               </div>
             }
           </TabBody>
           <div className='footer-container-account' style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
-            <p style={{textAlign:'center', width: '100%'}}>{success}</p>
+            <p className='success-message' style={{textAlign:'center', width: '100%'}}>{success}</p>
             <p style={{textAlign:'center', width: '100%'}} className='footer-title'>My Account</p>
           </div>
         </WindowContent>
