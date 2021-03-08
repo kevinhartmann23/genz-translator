@@ -21,7 +21,7 @@ const SearchForm = () => {
   const [searchValue, setSearch] = useState('')
   const [formatValue, setFormatValue] = useState('')
   const { currentUser } = useAuth()
-  const { querySearchTerms, termData, resetSearchData, appError, setAppError, message, setMessage } = useApp()
+  const { querySearchTerms, termData, resetSearchData, setAppError, message, setMessage } = useApp()
 
   
   const handleChange = (event) => {
@@ -40,7 +40,7 @@ const SearchForm = () => {
       await querySearchTerms(formattedTerm)
       await setLoading(false)
     } catch(error){
-      setAppError(error)
+      setAppError(true)
     }
   }
 
@@ -52,9 +52,8 @@ const SearchForm = () => {
   }, [])
 
   useEffect(() => {
-    setMessage()
-    setAppError()
-  }, [setAppError, setMessage])
+    resetSearchData()
+  }, [searchValue])
 
   
   return (
@@ -107,21 +106,13 @@ const SearchForm = () => {
               </Panel>
             </div>
         }
-        {message &&
-          <div className='loading-container'>
+        {message.length &&
+          <div className='loading-container message'>
             <Panel variant='well' style={{ width: '100%', padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
               <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{message}</p>
             </Panel>
           </div>
         }
-        {appError &&
-          <div className='loading-container'>
-            <Panel variant='well' style={{ width: '100%', padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{appError}</p>
-            </Panel>
-          </div>
-        }
-
       </Window> 
       }
     </>
