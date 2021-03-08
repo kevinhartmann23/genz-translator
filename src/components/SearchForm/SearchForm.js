@@ -26,6 +26,7 @@ const SearchForm = () => {
   
   const handleChange = (event) => {
     event.preventDefault()
+    resetSearchData()
     setSearch(event.target.value)
   }
 

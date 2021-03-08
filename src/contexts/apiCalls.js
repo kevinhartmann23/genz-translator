@@ -9,6 +9,7 @@ const apiCalls = {
       }
     })
       .then(response => response.json() )
+      .then(data => {return data.list})
       .catch(err => { console.error(err); });
   }
 }

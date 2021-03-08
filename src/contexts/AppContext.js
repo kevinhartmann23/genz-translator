@@ -24,16 +24,16 @@ export default function AppProvider({ children }) {
     setTermName(term)
 
     try {
-      const result = await apiCalls.requestTermsInfo(term).list
+      const result = await apiCalls.requestTermsInfo(terms)
       if(!result.length){
-        setMessage(`No results found for ${term.replace(/%20/g, " ")}...`)
+        setError(true)
       } else {
-        setMessage()
-        const sortedData = await sortIncomingData(data)
+        setError(false)
+        const sortedData = await sortIncomingData(result)
         await setTermData(sortedData)
       }
     } catch (error) {
-      setAppError(error)
+      setError(true)
     }
   }
 
