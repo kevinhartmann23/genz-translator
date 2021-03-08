@@ -82,25 +82,25 @@ const App = () => {
   
   return (
     <main className='App'>
-          <GlobalStyles />
-          <ThemeProvider theme={theme}>
-          <Header />
-          <Sidebar />
-          <Switch>
-            <Route path='/' exact component={Dashboard} />
-            <Route path='/login' component={Login} />
-            <Route path='/signup' component={Signup} />
-            <Route path='/search' component={SearchForm} />
-            <Route path='/results/:query'component={ResultsDisplay} />
-            <Route path='/cheatsheet' component={CheatSheet} />
-            <Route path='/hipterms' component={TopTerms} />
-            <Route path='/emojiguide' component={EmojiGuide} />
-            <Route path='/about' component={About} />
-            <Route path='/account' component={AccountInfo} />
-            <Route path='/resume' component={Resume} />
-            <Route component={NotFound} />
-          </Switch>
-        </ThemeProvider>
+      <GlobalStyles />
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Sidebar />
+        <Switch>
+          <Route path='/' exact component={Dashboard} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <Route path='/search' component={SearchForm} />
+          <Route path='/results/:query'component={ResultsDisplay} />
+          <Route path='/cheatsheet' component={CheatSheet} />
+          <Route path='/hipterms' component={TopTerms} />
+          <Route path='/emojiguide' component={EmojiGuide} />
+          <Route path='/about' component={About} />
+          <Route path='/account' component={AccountInfo} />
+          <Route path='/resume' component={Resume} />
+          <Route component={NotFound} />
+        </Switch>
+      </ThemeProvider>
     </main>
   );
 }
