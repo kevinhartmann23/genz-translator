@@ -24,24 +24,25 @@ export default function AppProvider({ children }) {
     setTermName(term)
 
     try {
-      const result = await apiCalls.requestTermsInfo(terms)
+      const result = await apiCalls.requestTermsInfo(term)
       if(!result.length){
-        setError(true)
+        setMessage(`No results found for ${term.replace(/%20/g, " ")}...`)
       } else {
-        setError(false)
+        setAppError(false)
+        setMessage('')
         const sortedData = await sortIncomingData(result)
         await setTermData(sortedData)
       }
     } catch (error) {
-      setError(true)
+      setAppError(true)
     }
   }
 
   function resetSearchData() {
     setTermData([])
     setTermName('')
-    setAppError()
-    setMessage()
+    setAppError(false)
+    setMessage('')
   }
 
   function storeUserFavorites(term) {
@@ -70,6 +71,7 @@ export default function AppProvider({ children }) {
     resetSearchData,
     updateTheme,
     setAppError,
+    setMessage,
     userFavorites,
     displayTheme,
     termData,
