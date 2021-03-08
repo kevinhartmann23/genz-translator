@@ -25,7 +25,7 @@ const ResultsDisplay = () => {
 
   const definitionTabs = termData.map((term, i) => <Tab value={i} key={i} id={i}>{`Definition ${i+1}`}</Tab>)
 
-  const wordInfo = termData.map((term, i) => <TabDisplay term={term} id={i} />)
+  const wordInfo = termData.map((term, i) => <TabDisplay key={i} term={term} id={i} />)
 
   const handleChange = (event) => {
     event.preventDefault()
