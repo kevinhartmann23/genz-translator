@@ -9,6 +9,9 @@ describe('Search From', () => {
       .get('.email').type(userEmail)
       .get('.password').type(userPassword)
       .get('.form-submit-button').click()
+
+      .get('#search-terms').click()
+      .url().should('eq', 'http://localhost:3000/search')
   })
 
   it('Should allow a user to type in a search term', () => {

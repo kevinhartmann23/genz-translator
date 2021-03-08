@@ -47,7 +47,7 @@ const ResultsDisplay = () => {
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>Results for {displayTermName}...</span>
           <Link to='/' style={{ width: '2rem' }}>
-            <Button style={{ fontWeight: 'bold' }}>
+            <Button onClick={resetSearchData} style={{ fontWeight: 'bold' }}>
               X
           </Button>
           </Link>
