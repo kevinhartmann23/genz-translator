@@ -33,11 +33,8 @@ const ResultsDisplay = () => {
   }
 
   useEffect(() => {
-    if (termData.length === 0) {
-      resetSearchData()
       setActiveTab(0)
-    }
-  }, [termData.length, resetSearchData])
+  }, [resetSearchData])
 
   return (
     <>

@@ -45,7 +45,7 @@ const SearchForm = () => {
   }
 
   useEffect(() => {
-    if(termData){
+    if(termData.length > 0){
       resetSearchData()
       setSearch('')
     }
@@ -94,7 +94,7 @@ const SearchForm = () => {
               </Panel>
             </div>
           }
-          {termData && 
+          {termData.length > 0 && 
               <div className='loading-container results'>
                 <Panel variant='well' style={{ width: '100%', padding: '1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }}>
               <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${formatValue.replace(/%20/g, " ")}...`}</p>

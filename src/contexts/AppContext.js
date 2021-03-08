@@ -9,7 +9,7 @@ export function useApp() {
 
 export default function AppProvider({ children }) {
   const [termName, setTermName] = useState('')
-  const [termData, setTermData] = useState()
+  const [termData, setTermData] = useState([])
   const [appError, setAppError] = useState()
   const [message, setMessage] = useState()
   const [userFavorites, setUserFavorites] = useState([])
@@ -39,7 +39,7 @@ export default function AppProvider({ children }) {
   }
 
   function resetSearchData() {
-    setTermData()
+    setTermData([])
     setTermName('')
     setAppError(false)
     setMessage('')
