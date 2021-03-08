@@ -95,7 +95,7 @@ function About() {
                   <Divider orientation='vertical' size='1.5rem' />
                   <ListItem style={{height:'1.75rem'}}>
                     <Link to='/resume'>
-                      <Button style={{fontSize:'.5rem', fontWeight:'bold', height:'1.5rem', width:'6rem'}}>
+                      <Button className='resume-button' style={{fontSize:'.5rem', fontWeight:'bold', height:'1.5rem', width:'6rem'}}>
                         <img src={resume} alt='view my resume' style={{ height: '1rem', marginRight: '.25rem' }} />
                         My Resume
                       </Button>

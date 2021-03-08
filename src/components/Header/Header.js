@@ -62,14 +62,14 @@ const Header = () => {
               }}
               onClick={() => setOpen(false)}
             >
-            <Link to='/about' style={{ width: '6.5rem', textAlign: 'center' }}>
+            <Link to='/about' style={{ width: '6.5rem', textAlign: 'center' }} className='about-button'>
               <ListItem style={{width:'6.5rem', textAlign:'center'}} >
                 <img src={account} alt='about gen z to a' style={{ height: '20px', width:'20px'}}/>
                 About
               </ListItem>
             </Link>
             <Divider />
-            <Link to='/account' style={{ width: '6.5rem', textAlign: 'center' }}>
+            <Link to='/account' style={{ width: '6.5rem', textAlign: 'center' }} className='account-button'>
               <ListItem style={{width:'6.5rem', textAlign:'center'}} >
                 <img src={account} alt='account information' style={{ height: '20px', width:'20px' }}/>
                 Account
