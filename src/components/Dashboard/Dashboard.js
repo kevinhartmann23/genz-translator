@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Redirect} from 'react-router-dom'
+import {useApp} from '../../contexts/AppContext'
 import {useAuth} from '../../contexts/AuthContext'
 
 import './Dashboard.css'
 
 const Dashboard = () => {
   const {currentUser} = useAuth()
+  const { resetSearchData } = useApp()
+  
+  useEffect(() => {
+    resetSearchData()
+  }, [currentUser])
+  
   return (
     <>
       {!currentUser && <Redirect to="/login" />}

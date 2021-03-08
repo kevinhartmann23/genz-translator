@@ -64,13 +64,13 @@ const SearchForm = () => {
           <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           <span>GenZ Lingo Search</span>
           <Link to='/' style={{width:'2rem'}}>
-            <Button style={{ fontWeight: 'bold' }}>
+            <Button className='back-button' style={{ fontWeight: 'bold' }}>
               X
             </Button>
           </Link>
         </WindowHeader>
         <WindowContent>
-          <div className='search-container'>
+          <div className='search-container' style={{marginBottom:'1rem'}}>
             <img className='search-icon' src={searchTerms} alt='search icon'/>
             <form className='search-form'>
               <TextField 
@@ -83,36 +83,36 @@ const SearchForm = () => {
                 onChange={handleChange}
                 required
               />
-              <Button style={{width:'40%'}}onClick={handleClick}>Search</Button>
+              <Button className='search-button' style={{width:'40%'}}onClick={handleClick}>Search</Button>
             </form>
           </div>
-        </WindowContent>
-        {loading && 
-          <div className='loading-container'>
-            <Panel variant='well' style={{width: '100%', padding:'1rem'}}>
-              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>Searching Term...</p>
-              <LoadingIndicator isLoading style={{width:'100%', height: '2rem'}}/>
-            </Panel>
-          </div>
-        }
-        {termData.length > 0 && 
-            <div className='loading-container'>
-              <Panel variant='well' style={{ width: '100%', padding: '1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }}>
-            <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${formatValue.replace(/%20/g, " ")}...`}</p>
-                <Progress hideValue value={100} style={{ width: '100%', height:'2rem' }}  />
-                <Link to={`/results/${formatValue}`} style={{width:'40%', marginTop:'.5rem'}}>
-                  <Button style={{ width: '100%' }}>View Results</Button>
-                </Link>
+          {loading && 
+            <div className='loading-container loading'>
+              <Panel variant='well' style={{width: '100%', padding:'1rem'}}>
+                <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>Searching Term...</p>
+                <LoadingIndicator isLoading style={{width:'100%', height: '2rem'}}/>
               </Panel>
             </div>
-        }
-        {message.length &&
-          <div className='loading-container message'>
-            <Panel variant='well' style={{ width: '100%', padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-              <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{message}</p>
-            </Panel>
-          </div>
-        }
+          }
+          {termData.length > 0 && 
+              <div className='loading-container results'>
+                <Panel variant='well' style={{ width: '100%', padding: '1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }}>
+              <p className='search-results' style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${formatValue.replace(/%20/g, " ")}...`}</p>
+                  <Progress hideValue value={100} style={{ width: '100%', height:'2rem' }} />
+                  <Link to={`/results/${formatValue}`} style={{width:'40%', marginTop:'.5rem'}}>
+                    <Button className='view-results-button' style={{ width: '100%' }}>View Results</Button>
+                  </Link>
+                </Panel>
+              </div>
+          }
+          {message.length > 0 &&
+            <div className='loading-container message'>
+              <Panel variant='well' style={{ width: '100%', padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+                <p style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{message}</p>
+              </Panel>
+            </div>
+          }
+        </WindowContent>
       </Window> 
       }
     </>
