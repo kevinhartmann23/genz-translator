@@ -1,7 +1,7 @@
 import React from 'react';
 import notFound from '../../assets/icons/notfound.png'
 import { useAuth } from '../../contexts/AuthContext'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './NotFound.css'
 
