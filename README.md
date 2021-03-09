@@ -76,6 +76,7 @@ npm install
 - A local environment will be required to run this app locally: 
 - Add `.env.local` file to main directory outside of source
 - Copy and Paste the code below into local environment file 
+- **Due to deployment, outside auth (google, github, twitter) cannot be tested locally. You will need to visit the deployed site to check this functionality. This is for security reasons.**
 <details>
   <Summary>Local Environment Code</summary>
   REACT_APP_FIREBASE_API_KEY=AIzaSyAmOK08i5IfpeZ6RhCA9XO1nrz94JKMZS0
