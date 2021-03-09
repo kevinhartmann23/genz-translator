@@ -99,7 +99,7 @@ function AccountInfo() {
     <>
       {!currentUser && <Redirect to="/login" />}
       {currentUser && 
-      <Window style={{ width: '40%', height: '90%', marginTop: '3.5rem', right: '10%' }}>
+      <Window style={{ width: '90%', height: '90%', marginTop: '3.5rem', right: '10%' }}>
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>Account</span>
           <Link to='/' style={{ width: '2rem' }}>
