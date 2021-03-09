@@ -31,7 +31,7 @@ function Resume() {
                 </Tooltip>
               </Link>
               <Link to='/' style={{ width: '2rem' }}>
-                <Button style={{ fontWeight: 'bold', height: '1.75rem', width: '1.75rem' }}>
+                <Button className='close-button' style={{ fontWeight: 'bold', height: '1.75rem', width: '1.75rem' }}>
                   X
                 </Button>
               </Link>

@@ -21,17 +21,16 @@ describe('About Page', () => {
   it('Should display information about the app and the creator', () => {
     cy
      .get('p').eq(1).contains('An on the go translator')
-      .get('p').eq(2).contains('I am a passionate, dedicated professional')
-      .get('p').eq(3).contains('Kevin Hartmann')
-      .get('p').eq(4).contains('kevinhartmann23@gmail.com')
+      .get('p').eq(2).contains('Kevin Hartmann')
+      .get('p').eq(3).contains('kevinhartmann23@gmail.com')
   })
 
   it('Should have links to social media account and redirect to my resume', () => {
     cy 
-      .get('#linkedin').should('have.text', 'LinkedIn')
-      .get('#github').should('have.text', 'Github')
-      .get('#twitter').should('have.text', 'Twitter')
-      .get('.resume-button').contains('My Resume').click()
+      .get('#linkedin')
+      .get('#github')
+      .get('#twitter')
+      .get('.resume-button').click()
       .url().should('eq', `${baseUrl}resume`)
   })
 
@@ -41,6 +40,7 @@ describe('Account Information Page', () => {
 
   it('Should visit account information', () => {
     cy
+      .get('.close-button').click()
       .get('.start-button').click()
       .get('.account-button').click()
       .url().should('eq', `${baseUrl}account`)
@@ -68,6 +68,7 @@ describe('Account Information Page', () => {
 
   it('Should allow user to logout at anytime', () => {
     cy
+      .get('.close-button').click()
       .get('.start-button').click()
       .get('.logout-button').click()
 

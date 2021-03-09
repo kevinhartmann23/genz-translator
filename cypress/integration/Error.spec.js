@@ -25,7 +25,6 @@ describe('Error Page', () => {
   it('Should allow user to navigate back to dashboard', () => {
     cy
       .get('.title-notfound').should('have.text', "Uh Oh! Looks like we can't find the page you are looking for or an error has occured!")
-      .pause()
       .get('.dashboard-button').click()
       .url().should('eq', baseUrl)
   })

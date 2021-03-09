@@ -103,9 +103,9 @@ function AccountInfo() {
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>Account</span>
           <Link to='/' style={{ width: '2rem' }}>
-            <Button style={{ fontWeight: 'bold' }}>
+            <Button className='close-button' style={{ fontWeight: 'bold' }}>
               X
-        </Button>
+            </Button>
           </Link>
         </WindowHeader>
         <WindowContent>

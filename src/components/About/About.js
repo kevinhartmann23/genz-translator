@@ -44,7 +44,7 @@ function About() {
           <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <span>About GenZtoA</span>
             <Link to='/' style={{ width: '2rem' }}>
-              <Button style={{ fontWeight: 'bold' }}>
+              <Button className='back-button' style={{ fontWeight: 'bold' }}>
                 X
               </Button>
             </Link>
