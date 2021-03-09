@@ -16,7 +16,7 @@
 .welcome,
 .title {
   font-family: 'VT323', monospace !important;
-  width: 80%;
+  width: 100%;
   font-size: 6rem !important;
 }
 
@@ -28,7 +28,23 @@
 
 .slogan {
   font-family: 'VT323', monospace !important;
-  width: 80%;
+  width: 100%;
   font-size: 1.5rem !important;
   font-weight: lighter;
+}
+
+@media only screen and (max-width: 1000px) {
+  .welcome,
+  .title,
+  .slogan {
+    transform: scale(.5);
+  }
+}
+
+@media only screen and (max-width: 677px) {
+  .welcome,
+  .title,
+  .slogan {
+    display:none;
+  }
 }

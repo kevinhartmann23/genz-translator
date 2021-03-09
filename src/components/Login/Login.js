@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <>
       {currentUser && <Redirect to='/' />}
-      <Window className='window' style={{ width: '25rem', alignSelf:'center', left:'35%'}}>
+      <Window className='window' style={{ width: '40rem', alignSelf:'center', marginLeft:'10%', marginRight:'10%'}}>
         <WindowHeader active={true} className='window-header'>
           <span>GenZ 2 A - Login</span>
         </WindowHeader>

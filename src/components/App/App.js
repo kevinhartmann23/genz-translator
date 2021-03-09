@@ -15,6 +15,7 @@ import AccountInfo from '../AccountInfo/AccountInfo'
 import NotFound from '../NotFound/NotFound'
 import { useApp } from '../../contexts/AppContext'
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext'
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { styleReset } from 'react95';
@@ -54,6 +55,7 @@ const GlobalStyles = createGlobalStyle`
 
 const App = () => {
   const { displayTheme, appError } = useApp()
+  const { currentUser } = useAuth()
   let theme
 
   if(displayTheme === 'vaporTeal'){
@@ -103,6 +105,13 @@ const App = () => {
           <Route component={NotFound} />
         </Switch>
       </ThemeProvider>
+      {!currentUser && 
+        <section className='welcome-screen'>
+          <h1 className='welcome'>Welcome to</h1>
+          <h2 className='title'>GenZtoA</h2>
+          <p className='slogan'>translating what those darn kids are saying...</p>
+        </section>
+      }
     </main>
   );
 }
