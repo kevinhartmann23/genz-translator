@@ -4,6 +4,8 @@ import { useApp } from '../../contexts/AppContext'
 import addButton from '../../assets/icons/add.png'
 import checkMark from '../../assets/icons/check.png'
 import xMark from '../../assets/icons/x.png'
+import up from '../../assets/icons/up.png'
+import down from '../../assets/icons/down.png'
 
 import {
   Fieldset,
@@ -60,24 +62,25 @@ const TabDisplay = ({term, id}) => {
       </Fieldset>
       <Fieldset label='Other:' style={{ marginBottom: '.5rem' }}>
         <div className='other-panel' style={{ width: '100%', height: '3rem', padding: '0rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <List inline style={{ margin: '.5rem', height: '3rem' }}>
+            <List inline style={{ margin: '0rem', height: '3rem' }}>
               <ListItem className='term-up'>
-                {`Thumbs Up: ${thumbs_up}`}
+                <img src={up} alt='likes' style={{ height: '20px' }} />
+                {thumbs_up}
               </ListItem>
               <Divider orientation='vertical' size='2rem' />
               <ListItem className='term-down'>
-                {`Thumbs Down: ${thumbs_down}`}
+                <img src={down} alt='dislikes' style={{height:'20px'}}/>
+                {thumbs_down}
               </ListItem>
               <Divider orientation='vertical' size='2rem' />
               <ListItem>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <p style={{ marginRight: '.125rem' }}>Saved:</p>
-                  <img style={{ width: '1.3rem', height: '1.3rem' }} src={savedState} alt='item unsaved' />
+                  <img style={{ width: '20px', height: '20px' }} src={savedState} alt='item unsaved' />
                 </div>
               </ListItem>
             </List>
             {!disabled && <Tooltip text='Save to Cheet Sheet' enterDelay={100} leaveDelay={100}>
-              <Button className='save-button' id={id} style={{ width: '3.5rem', height: '3.5rem' }} onClick={handleClick}><img style={{ height: '2.5rem', width: '2.5rem' }} src={addButton} alt='save to cheatsheet' /></Button>
+              <Button className='save-button' id={id} style={{ width: '3rem', height: '3rem' }} onClick={handleClick}><img style={{ height: '20px', width: '20px' }} src={addButton} alt='save to cheatsheet' /></Button>
             </Tooltip>
             }
             {disabled && <Tooltip text='Term Saved!' enterDelay={100} leaveDelay={100}>
