@@ -35,7 +35,7 @@ const EmojiGuide = () => {
     <>
       {!currentUser && <Redirect to="/login" />}
       {currentUser && 
-      <Window style={{ width: 'auto', height:'auto', marginTop: '10rem', right:'10%' }}>
+      <Window style={{ width: 'auto', height:'60%', marginTop: '10rem', right:'10%' }}>
         <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span>Emoji Guide</span>
           <Link to='/' style={{ width: '2rem' }}>
@@ -52,7 +52,7 @@ const EmojiGuide = () => {
                 <TableHeadCell style={{ width: 'auto' }}>Meaning</TableHeadCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody style={{ overflow: 'scroll'}}>
               {data}
             </TableBody>
           </Table>

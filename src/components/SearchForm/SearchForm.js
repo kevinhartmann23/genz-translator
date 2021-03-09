@@ -60,9 +60,9 @@ const SearchForm = () => {
     <>
       {!currentUser && <Redirect to="/login" />}
       {currentUser && 
-      <Window className='window' style={{ width: '30rem', height:'auto', alignSelf: 'center', right:'30%', display:'flex', flexDirection:'column'}}>
+      <Window className='window' style={{ width: '40rem', height:'auto', alignSelf: 'center', display:'flex', flexDirection:'column', marginLeft:'10%', marginRight: '10%'}}>
           <WindowHeader active={true} className='window-header' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-          <span>GenZ Lingo Search</span>
+          <span>Search</span>
           <Link to='/' style={{width:'2rem'}}>
             <Button className='back-button' style={{ fontWeight: 'bold' }}>
               X
@@ -72,7 +72,7 @@ const SearchForm = () => {
         <WindowContent>
           <div className='search-container' style={{marginBottom:'1rem'}}>
             <img className='search-icon' src={searchTerms} alt='search icon'/>
-            <form className='search-form'>
+            <form className='search-form' style={{width:'100%', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
               <TextField 
                 style={{width:'100%', height: '4rem', marginBottom: '1rem'}}
                 className='search'
@@ -83,7 +83,7 @@ const SearchForm = () => {
                 onChange={handleChange}
                 required
               />
-              <Button className='search-button' style={{width:'40%'}}onClick={handleClick}>Search</Button>
+              <Button className='search-button' style={{width:'50%', textAlign:'center'}}onClick={handleClick}>Search</Button>
             </form>
           </div>
           {loading && 
@@ -95,12 +95,12 @@ const SearchForm = () => {
             </div>
           }
           {termData.length > 0 && 
-              <div className='loading-container results'>
-                <Panel variant='well' style={{ width: '100%', padding: '1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }}>
-              <p className='search-results' style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${formatValue.replace(/%20/g, " ")}...`}</p>
+            <div className='loading-container results' style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Panel variant='well' style={{ width: '100%', padding: '.5rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }}>
+                  <p className='search-results' style={{ textAlign: 'center', marginBottom: '0.5rem' }}>{`Top ${termData.length} terms found for ${formatValue.replace(/%20/g, " ")}...`}</p>
                   <Progress hideValue value={100} style={{ width: '100%', height:'2rem' }} />
-                  <Link to={`/results/${formatValue}`} style={{width:'40%', marginTop:'.5rem'}}>
-                    <Button className='view-results-button' style={{ width: '100%' }}>View Results</Button>
+                  <Link to={`/results/${formatValue}`}>
+                    <Button className='view-results-button' style={{ width: '50%' }}>Results</Button>
                   </Link>
                 </Panel>
               </div>

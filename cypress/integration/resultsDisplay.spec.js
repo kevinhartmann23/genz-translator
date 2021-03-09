@@ -26,8 +26,8 @@ describe('Results Display', () => {
     cy
       .get('.term-definition').should('have.text', 'When [something] is [turned up] or [popping] ...')
       .get('.term-example').should('have.text', 'John : did you go to that party last night\n\n[Daquan] : [yes] [that shit] was lit')
-      .get('.term-up').should('have.text', 'Thumbs Up: 11938')
-      .get('.term-down').should('have.text', 'Thumbs Down: 2672')
+      .get('.term-up').should('have.text', '11938')
+      .get('.term-down').should('have.text', '2672')
   })
 
   it('Should save results to cheat sheet if user chooses to', () => {
