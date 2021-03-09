@@ -34,7 +34,13 @@ An on the go translator for millennials and older to translate slang on the go. 
 ## Niche Audience
 The additional research and goal of this project was to consider a specific, unique audience. Some would say a **Niche Audience**. The goal was to gain experience writing anf understanding **User Personas** and **User Stories/Acceptance Criteria**.  
 
-For more infomation view the [User Persona](https://docs.google.com/presentation/d/1ZpUWLAnlkzL5I9KFWLDt_iJwAKBFLHIRbwdyEyyWvsM/edit?usp=sharing) documentation 
+For more infomation view the [User Persona](https://docs.google.com/presentation/d/1ZpUWLAnlkzL5I9KFWLDt_iJwAKBFLHIRbwdyEyyWvsM/edit?usp=sharing) documentation
+
+### Other Learning Goals:
+- Gain Experience with a Compenent Library
+- Sharpen Knowledge of Hooks (useState, useContext, useEffect)
+- Develop my React Skills (especially component structure and router)
+- More experience with cypress testing 
 
 
 ## Setup Instructions
