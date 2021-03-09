@@ -5,12 +5,12 @@
 - Kevin Hartmann: [github profile](https://github.com/kevinhartmann23):[linkedIn](https://www.linkedin.com/in/kevin-hartmann/)
 
 ### Reviewers
-- Jeff Duke: _mentor review_
-- Jeff Kersting: _peer review_
+- Jeff Duke: _mentor review_ @Jeff-Duke
+- Jeff Kersting: _peer review_ @JeffKersting
 
 
 ### Deployed Site
-[visit GenZ-2A here]()
+[visit GenZ-2A here](https://genz2a.web.app/)
 
 
 ## Table of Contents
@@ -34,11 +34,11 @@ An on the go translator for millennials and older to translate slang on the go. 
 ## Niche Audience
 The additional research and goal of this project was to consider a specific, unique audience. Some would say a **Niche Audience**. The goal was to gain experience writing anf understanding **User Personas** and **User Stories/Acceptance Criteria**.  
 
-For more infomation view the [User Persona]() documentation 
+For more infomation view the [User Persona](https://docs.google.com/presentation/d/1ZpUWLAnlkzL5I9KFWLDt_iJwAKBFLHIRbwdyEyyWvsM/edit?usp=sharing) documentation 
 
 
 ## Setup Instructions
-If you would like to simply view the current working version, just visit the [deployed site]()!
+If you would like to simply view the current working version, just visit the [deployed site](https://genz2a.web.app/)!
 
 If you would like to contribute, please request contributor access and follow the steps below:
 
@@ -72,13 +72,13 @@ npm install
 - Copy and Paste the code below into local environment file 
 <details>
   <Summary>Local Environment Code</summary>
-  REACT_APP_FIREBASE_API_KEY=
-  REACT_APP_FIREBASE_AUTH_DOMAIN=
-  REACT_APP_FIREBASE_DATABASE_URL=
-  REACT_APP_FIREBASE_PROJECT_ID=
-  REACT_APP_FIREBASE_STORAGE_BUCKET=
-  REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
-  REACT_APP_FIREBASE_APP_ID=
+  REACT_APP_FIREBASE_API_KEY=AIzaSyAmOK08i5IfpeZ6RhCA9XO1nrz94JKMZS0
+  REACT_APP_FIREBASE_AUTH_DOMAIN=genz2a.firebaseapp.com
+  REACT_APP_FIREBASE_DATABASE_URL=https://genz2a-dev-default-rtdb.firebaseio.com
+  REACT_APP_FIREBASE_PROJECT_ID=genz2a
+  REACT_APP_FIREBASE_STORAGE_BUCKET=genz2a.appspot.com
+  REACT_APP_FIREBASE_MESSAGING_SENDER=794039335141
+  REACT_APP_FIREBASE_APP_ID=1:794039335141:web:f71f637069bb8bdc3a3c0c
 </details>
 
 ##### JavaScript
@@ -179,7 +179,7 @@ Now that you are inside the dashboard, a user can navigate in two ways.
 - Visit About Page
 - Logout of Account
 
-![Dashboard Navigation]()
+![Dashboard Navigation](https://media.giphy.com/media/EoxWHtzwNwAiHSi3sP/giphy.gif)
 
 **Future Iterations**
 - More Interactions - Set all windows to be `draggable`, and provide more of a desktop feel.
@@ -198,7 +198,7 @@ For each term a definition, example, and other information is provided. A user c
 ### Deleting a Term 
 While visiting their cheat sheet, a user can deside they've gotten their lingo down. They can easily remove it from the cheat sheet! 
 
-![Delete Term]()
+![Delete Term](https://media.giphy.com/media/ruJZ7cNdGowPXsa0co/giphy.gif)
 
 **Future Iterations**
 - Post cheat sheet data to firestore to persist on page load, and signing back in.
