@@ -2,7 +2,11 @@
 ### Turing School of Software and Design
 
 ### Contributors
-- Kevin Hartmann : [github profile](https://github.com/kevinhartmann23) : [linkedIn](https://www.linkedin.com/in/kevin-hartmann/)
+- Kevin Hartmann: [github profile](https://github.com/kevinhartmann23):[linkedIn](https://www.linkedin.com/in/kevin-hartmann/)
+
+### Reviewers
+- Jeff Duke: _mentor review_
+- Jeff Kersting: _peer review_
 
 
 ### Deployed Site
@@ -93,10 +97,7 @@ If you wish to contribute, please read the documentation for [React95](https://r
 
 
 ##### Images
-
-Images and Icons are dedicated to the assests directory, `src/assets`. The need to be added and stored there.
-
-
+Images and Icons are dedicated to the assests directory, `src/assets/icons`. The need to be added and stored there.
 ##### How to View Your Code in Action
 
 In the terminal, run:
@@ -124,24 +125,28 @@ Similar to feature code, your test code needs to be put in a specific place for 
 Any 'dummy' test data must be stored in `cypress/fixtures` directory as a `.json` file. Any confusion please refer to the [cypress documentation](https://docs.cypress.io/guides/overview/why-cypress.html)
 
 ##### Running Your Tests
-
 Run your test suite using the command:
 
 ```bash
 npx cypress open
+or
+npm run cypress
 ```
-
 The test results will output to cypress interface, select the test you wish to run and watch the magic of cypress in action.
-
 ---
-
 ##### Contributions
 
-From here any additional contributions must be added as an issue, and await approval. Once approved please create a branch `feature/this-new-feature`. Submit a pull request for approval, using the given pull request template. 
+From here any additional contributions must be added as an issue, and await approval. Once approved please create a branch `feature/this-new-feature`. Submit a pull request for approval, using the given pull request template.
+
+Branches are to be named in the following manner:
+- Feature: `feature/this-new-feature`
+- Test: `test/feature-being-tested`
+- Bug Fix: `bug/bug-being-fixed`
+- Refactor: `refactor/feature-being-refactored`
 
 ##### Deploying Site
 
-Site deployment is through Firebase Hosting, and is set up to auto deploy with every merged commit by repository owner.
+Site deployment is through Firebase Hosting, and will be handled by the Repository owner. Please contact @kevinhartmann23 with requests to deploy.
 
 Happy Coding!!
 
@@ -155,21 +160,65 @@ You will be greeted with a login page. The login page was designed to be clean a
 username: test@test.com
 password: testing
 ```
+![login](https://media.giphy.com/media/JcyJIYNVlYpPbG7Zer/giphy.gif)
 
 Great! Now let's explore.
 
+**Future Iterations**
+- Add `Reset` and `Forgot` Password and Email to Login
 ### Translator Dashboard
-Now that you are inside the dashboard, you can .....
-- Action 1
-- Action 2
+Now that you are inside the dashboard, a user can navigate in two ways. 
 
-![mobile giphy]()
+#### Sidebar Navigation
+- To Search Page
+- To View Your Saved Terms
+- To View Emoji Guide
+- To View Hip Used Terms
+#### Header Menu
+- View Account Information
+- Visit About Page
+- Logout of Account
 
-Other Actions Here
+![Dashboard Navigation]()
 
-![ giphy]()
+**Future Iterations**
+- More Interactions - Set all windows to be `draggable`, and provide more of a desktop feel.
+### Search Terms and Lingo
+On selecting the search icon, a user can search any term they have heard and want a defintion for.
 
-More Actions. ... . .. 
+The user can then view the results. Behind the hood, GenZtoA has filtered the search results from `Urban Dictionary` by most thumbs up and is deconstructing the search results to display the top 3 popular terms, voted by the people!
+
+For each term a definition, example, and other information is provided. A user can then save any term to their cheat sheet at anytime.
+
+![Cheat Cheet](https://media.giphy.com/media/jBgnw1b88JL1DyYX1J/giphy.gif)
+
+**Future Iterations**
+- Add Filter to Search Results, some results can be vulgar or unexpected. By adding a filter and check for certain key terms can increase user experience
+- Not allow duplicate definitions added to cheatsheet
+### Deleting a Term 
+While visiting their cheat sheet, a user can deside they've gotten their lingo down. They can easily remove it from the cheat sheet! 
+
+![Delete Term]()
+
+**Future Iterations**
+- Post cheat sheet data to firestore to persist on page load, and signing back in.
+### Hip Terms & Emoji Guide
+There are some quick guides for a user to reference as well! Check out the `Hip Terms` or `Emoji Guide` features as well!
+
+![Hip & Emoji](https://media.giphy.com/media/igkpylE2wZSxJACTV3/giphy.gif)
+
+**Future Iterations**
+- Create a database to update hipterms on amount of searches throughout the app, and highest 'thumbs up' from urban dictionary api.
+### Account Information
+A user can also view and change their account information but visiting the Account Information page. If a user signs in with an external account some of their information will be added to their GenZtoA account; name, icon. A user can also view some other specified account information, and update their user name. 
+
+![Account](https://media.giphy.com/media/GSVix8LQrxgrA2sMbF/giphy.gif)
+
+**Future Iterations**
+- Verify unverified emails, with firebase email verification.
+- Change Password functionality
+- Update email funcationality
+- Add a user photo
 
 All finished? Logout in the dropdown menu.
 
@@ -177,18 +226,17 @@ All finished? Logout in the dropdown menu.
 
 ## Challenges & Wins
 ### Challenges
-- 
-
+- **Responsiveness & Styling Compromise:** Choosing to use React95 was a lot of fun, but it is rather outdated and missing a lot of responsiveness. This has caused making the app responsiveness a little more difficult than styling the components myself. 
 
 ### Wins/Reflections
-- 
-
-### Future Iterations:
-- 
+- **I truly enjoyed working on this project**
+- **Organization and Planning:** From all of my project thus far, this was the most planned and organized I have started, continued, and finished on any project. I found that by doing this my stress level was kept at an all time low during a tight dead line, and I worked extremely efficiently within a 5 day deadline. 
+- **Developing My Understanding and Skill Set:** I have grown comfortable and developed my skills in React on this project. Getting to hone in my understanding of `Global State` using `useContext`, and other react hooks (useEffect, useState).
+- **Adapted to different version control:** When setting the use of `React95` the version of `React` I began with was  newer than `React95`. Learning about this issue with a dependency, changing the version control, and dealing with the changes in certain use cases was a great learning experience. It taught me to be adaptable on an older version of a technology and adapt to continue to deliver a great project.
 
 ## Appreciation 
 
-- A special thanks to my mentor @jeffDuke for his continous support and guidance.
+- A special thanks to my mentor @Jeff-Duke for his continous support and guidance.
 - My instructors - For the freedom and opportunity to explore and create new and exciting projects on a weekly basis.
-- My cohort mates, the rubberducks, the positive influencers, idea boards. We are in this together!
+- My cohort mates, the rubberducks, the positive influencers, idea boards, ecpecially @JeffKersting for conducting a peer review on this project. We are in this together!
 
